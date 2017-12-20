@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Ticketing System"
   s.description = "Ticketing System Microservice"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.1.4"
 
