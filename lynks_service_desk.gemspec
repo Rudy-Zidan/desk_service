@@ -15,15 +15,15 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 5.1.4"
-  s.add_dependency "friendly_id", "~> 5.1.0"
-  s.add_dependency "aasm"
+  s.add_dependency 'rails', '~> 5.1.4'
+  s.add_dependency 'friendly_id', '~> 5.1.0'
+  s.add_dependency 'aasm'
 
-  s.add_development_dependency "pg"
-  s.add_development_dependency "yard"
-  s.add_development_dependency "byebug"
-  s.add_development_dependency "awesome_print"
-  s.add_development_dependency "annotate"
-  s.add_development_dependency "puma"
-  s.add_development_dependency "rails-erd"
+  s.add_development_dependency 'pg'
+  s.add_development_dependency 'yard'
+  s.add_development_dependency 'byebug'
+  s.add_development_dependency 'awesome_print'
+  s.add_development_dependency 'annotate'
+  s.add_development_dependency 'puma'
+  s.add_development_dependency 'rails-erd'
 end
