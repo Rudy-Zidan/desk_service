@@ -3,7 +3,6 @@ PATH
   specs:
     lynks_service_desk (0.1.0)
       aasm
-      friendly_id (~> 5.1.0)
       rails (~> 5.1.4)
 
 GEM
@@ -59,8 +58,6 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.3)
     erubi (1.7.0)
-    friendly_id (5.1.0)
-      activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.1)
