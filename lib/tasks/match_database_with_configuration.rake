@@ -2,13 +2,7 @@ desc "Match database with updated configuration"
 
 task match_database_with_configuration: :environment do
 
-	byebug
-
-	priorities = {
-		"Low" => 48,
-		"Medium" => 24,
-		"High" => 12
-	}
+	
 
 	priorities.each do |name, hours|
 		LynksServiceDesk::Priority.find_by_name(name) || LynksServiceDesk::Priority.create(name: name, hours: hours)
