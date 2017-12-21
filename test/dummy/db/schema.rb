@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221001015) do
+ActiveRecord::Schema.define(version: 20171221002728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20171221001015) do
     t.index ["slug"], name: "index_lynks_service_desk_categories_on_slug"
   end
 
+  create_table "lynks_service_desk_metrics", force: :cascade do |t|
+    t.bigint "ticket_id"
+    t.string "action", null: false
+    t.string "duration_from_previous", null: false
+    t.string "duration", null: false
+    t.string "duration_from_created_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_lynks_service_desk_metrics_on_ticket_id"
+  end
+
   create_table "lynks_service_desk_sub_categories", force: :cascade do |t|
     t.bigint "category_id"
     t.string "name", default: "", null: false
@@ -35,6 +46,16 @@ ActiveRecord::Schema.define(version: 20171221001015) do
     t.index ["active"], name: "index_lynks_service_desk_sub_categories_on_active"
     t.index ["category_id"], name: "index_lynks_service_desk_sub_categories_on_category_id"
     t.index ["slug"], name: "index_lynks_service_desk_sub_categories_on_slug"
+  end
+
+  create_table "lynks_service_desk_ticket_relation_objects", force: :cascade do |t|
+    t.bigint "ticket_id"
+    t.integer "relation_object_id"
+    t.string "relation_object_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["relation_object_id", "relation_object_type"], name: "index_lynks_service_desk_relation_object_relation_object"
+    t.index ["ticket_id"], name: "index_lynks_service_desk_ticket_relation_objects_on_ticket_id"
   end
 
   create_table "lynks_service_desk_tickets", force: :cascade do |t|
@@ -53,7 +74,9 @@ ActiveRecord::Schema.define(version: 20171221001015) do
     t.index ["sub_category_id"], name: "index_lynks_service_desk_tickets_on_sub_category_id"
   end
 
+  add_foreign_key "lynks_service_desk_metrics", "lynks_service_desk_tickets", column: "ticket_id"
   add_foreign_key "lynks_service_desk_sub_categories", "lynks_service_desk_categories", column: "category_id"
+  add_foreign_key "lynks_service_desk_ticket_relation_objects", "lynks_service_desk_tickets", column: "ticket_id"
   add_foreign_key "lynks_service_desk_tickets", "lynks_service_desk_categories", column: "category_id"
   add_foreign_key "lynks_service_desk_tickets", "lynks_service_desk_sub_categories", column: "sub_category_id"
 end
