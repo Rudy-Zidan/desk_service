@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220235726) do
+ActiveRecord::Schema.define(version: 20171221001015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,5 +37,23 @@ ActiveRecord::Schema.define(version: 20171220235726) do
     t.index ["slug"], name: "index_lynks_service_desk_sub_categories_on_slug"
   end
 
+  create_table "lynks_service_desk_tickets", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "sub_category_id"
+    t.integer "creator_id"
+    t.integer "assignee_id"
+    t.string "state"
+    t.json "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assignee_id"], name: "index_lynks_service_desk_tickets_on_assignee_id"
+    t.index ["category_id"], name: "index_lynks_service_desk_tickets_on_category_id"
+    t.index ["creator_id"], name: "index_lynks_service_desk_tickets_on_creator_id"
+    t.index ["state"], name: "index_lynks_service_desk_tickets_on_state"
+    t.index ["sub_category_id"], name: "index_lynks_service_desk_tickets_on_sub_category_id"
+  end
+
   add_foreign_key "lynks_service_desk_sub_categories", "lynks_service_desk_categories", column: "category_id"
+  add_foreign_key "lynks_service_desk_tickets", "lynks_service_desk_categories", column: "category_id"
+  add_foreign_key "lynks_service_desk_tickets", "lynks_service_desk_sub_categories", column: "sub_category_id"
 end

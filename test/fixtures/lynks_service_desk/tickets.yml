@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: lynks_service_desk_tickets
+#
+#  id              :integer          not null, primary key
+#  category_id     :integer
+#  sub_category_id :integer
+#  creator_id      :integer
+#  assignee_id     :integer
+#  state           :string
+#  body            :json
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: one
+  sub_category: one
+  creator_id: 1
+  assignee_id: 1
+  state: MyString
+  body: 
+
+two:
+  category: two
+  sub_category: two
+  creator_id: 1
+  assignee_id: 1
+  state: MyString
+  body: 
