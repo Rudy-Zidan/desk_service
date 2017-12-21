@@ -12,5 +12,11 @@
 
 module LynksServiceDesk
   class Category < ApplicationRecord
+    before_save :set_slug
+
+    def set_slug
+      slug = slug.parameterize
+    end
+
   end
 end
