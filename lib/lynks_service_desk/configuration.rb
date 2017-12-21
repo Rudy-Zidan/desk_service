@@ -3,7 +3,9 @@ module LynksServiceDesk
     attr_accessor :ticketable_classes, :priorities, :tickets_types,
                   :sub_categories_parameters, :sub_categories_messages,
                   :record_state_transitions_as_metrics,
-                  :allowed_metric_types
+                  :allowed_metric_types, :initial_state,
+                  :check_for_new_using_metrics,
+                  :state_transitions
 
     def initialize
       @ticketable_classes = []
@@ -13,18 +15,26 @@ module LynksServiceDesk
       @sub_categories_messages = {}
       @record_state_transitions_as_metrics = true
       @allowed_metric_types = []
+      @initial_state = "open"
+      @check_for_new_using_metrics = true
+      @state_transitions = { 
+	      	"Mark as on hold" => ["Open", "On Hold"],
+			"Close" => [["Open", "On Hold"], "Closed"]
+		}
     end
 
     # @ticketable_classes expects an array of models
     # example: [Order, Item, ItemInstance]
+    # default: []
 
     # @priorities expects a hash containing name, and number of hours
-    # example:
+    # default:
     # {
 	# 	"high" => 12,
 	# 	"medium" => 24,
 	# 	"low" => 48
 	# }
+	# 
 
 	# @tickets_types expects categories, sub_categories, and priorities
 	# example:
@@ -38,6 +48,7 @@ module LynksServiceDesk
 	# 		"Another Sub Category" => "low"
 	#   }
 	# }
+	# default: {}
 
 	# @sub_categories_parameters expects sub_categories, and parameters names
 	# and types that will be allowed.
@@ -52,6 +63,7 @@ module LynksServiceDesk
 	# 		"name" => String
 	# 	}
 	# }
+	# default: {}
 
 	# @sub_categories_messages expects sub_categories, locales, and the message
 	# example:
@@ -64,11 +76,11 @@ module LynksServiceDesk
 	# 			 Por favor pague antes %due_date",
 	# 	}
 	# }
-	# 
+	# default: {}
 	# 
 	# 
 
-	# @record_state_transitions_as_metrics expects true or false
+	# @record_state_transitions_as_metrics expects a boolean
 	# toggles whether metrics are created upon state transition or not
 	# default true
 
@@ -76,7 +88,20 @@ module LynksServiceDesk
 	# @allowed_metric_types expects an array of strings
 	# example:
 	# ["First view", "First customer contact"]
+	# default: []
 
-	
+	# @initial_state expects a string
+	# this will be the default state of any new ticket
+	# default: "Open"
+
+	# @check_for_new_using_new expects a boolean
+	# this will default all tickets with no metrics to the state "new"
+	# default: true
+	# protip: set this to false if your initial state is "new"
+
+	# @state_transitions expects a hash
+	# default: { "Mark as on hold" => ["Open", "On Hold"],
+	# 			 "Close" => [["Open", "On Hold"], "Closed"]}
+
   end
 end
