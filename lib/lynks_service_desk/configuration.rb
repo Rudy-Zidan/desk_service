@@ -1,7 +1,9 @@
 module LynksServiceDesk
   class Configuration
     attr_accessor :ticketable_classes, :priorities, :tickets_types,
-                  :sub_categories_parameters, :sub_categories_messages
+                  :sub_categories_parameters, :sub_categories_messages,
+                  :record_state_transitions_as_metrics,
+                  :allowed_metric_types
 
     def initialize
       @ticketable_classes = []
@@ -9,10 +11,12 @@ module LynksServiceDesk
       @tickets_types = {}
       @sub_categories_parameters = {}
       @sub_categories_messages = {}
+      @record_state_transitions_as_metrics = true
+      @allowed_metric_types = []
     end
 
     # @ticketable_classes expects an array of models
-    # example: Order, Item, ItemInstance
+    # example: [Order, Item, ItemInstance]
 
     # @priorities expects a hash containing name, and number of hours
     # example:
@@ -64,8 +68,14 @@ module LynksServiceDesk
 	# 
 	# 
 
+	# @record_state_transitions_as_metrics expects true or false
+	# toggles whether metrics are created upon state transition or not
+	# default true
 
 
+	# @allowed_metric_types expects an array of strings
+	# example:
+	# ["First view", "First customer contact"]
 
 
   end
