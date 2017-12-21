@@ -6,9 +6,8 @@
 #  ticket_id                :integer
 #  user_id                  :integer
 #  action                   :string           not null
-#  duration_from_previous   :string           not null
-#  duration                 :string           not null
-#  duration_from_created_at :string           not null
+#  duration_from_previous   :integer          not null
+#  duration_from_created_at :integer          not null
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #

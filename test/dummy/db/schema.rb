@@ -29,9 +29,8 @@ ActiveRecord::Schema.define(version: 20171221004935) do
     t.bigint "ticket_id"
     t.integer "user_id"
     t.string "action", null: false
-    t.string "duration_from_previous", null: false
-    t.string "duration", null: false
-    t.string "duration_from_created_at", null: false
+    t.integer "duration_from_previous", null: false
+    t.integer "duration_from_created_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ticket_id"], name: "index_lynks_service_desk_metrics_on_ticket_id"
