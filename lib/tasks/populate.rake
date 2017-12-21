@@ -14,24 +14,242 @@ task populate: :environment do
 
 	values_hash = {
 		"Operations" => {
-			"Price change" => "medium",
-			"Out of stock" => "medium",
-			"Clearance" => "medium",
-			"Customs Category" => "medium",
-			"Missing Specs" => "medium",
-			"SLA" => "medium",
-			"Domestic Shipping inside USA per store" => "medium",
-			"Item's weight" => "medium",
-			"Missing" => "medium",
-			"Cancelled by seller" => "medium",
-			"Prohibited" => "medium",
-			"Webiste not trusted" => "medium",
-			"Payment rejection" => "medium",
-			"Seller not trusted" => "medium",
-			"Outbid" => "medium",
-			"Mismatched" => "medium",
-			"Damaged" => "medium",
-			"Promo codes application" => "medium",
+			"Price change" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Out of stock" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Clearance" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Customs Category" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Missing Specs" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"SLA" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Domestic Shipping inside USA per store" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Item's weight" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Missing" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Cancelled by seller" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Prohibited" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Webiste not trusted" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Payment rejection" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Seller not trusted" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Outbid" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Mismatched" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Damaged" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
+			"Promo codes application" => {
+				priority: "medium",
+				options: {
+					price_before: {
+						required: true,
+						class: Integer
+					},
+					price_after: {
+						required: true,
+						class: [DateTime, Integer]
+					}
+				}
+			},
 		}
 	}
+
+
 end

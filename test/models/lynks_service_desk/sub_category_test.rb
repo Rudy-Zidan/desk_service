@@ -2,15 +2,15 @@
 #
 # Table name: lynks_service_desk_sub_categories
 #
-#  id                 :integer          not null, primary key
-#  category_id        :integer
-#  priority_id        :integer
-#  name               :string           default(""), not null
-#  slug               :string           default(""), not null
-#  active             :boolean          default(TRUE), not null
-#  allowed_parameters :json             not null
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id          :integer          not null, primary key
+#  category_id :integer
+#  priority_id :integer
+#  name        :string           default(""), not null
+#  slug        :string           default(""), not null
+#  active      :boolean          default(TRUE), not null
+#  options     :json             not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 require 'test_helper'
