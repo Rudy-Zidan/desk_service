@@ -1,5 +1,7 @@
 # LynksServiceDesk
-Short description and motivation.
+
+## Database
+![alt text](https://raw.githubusercontent.com/Lynks/LynksServiceDesk/master/erd.png)
 
 ## Usage
 How to use my plugin.
