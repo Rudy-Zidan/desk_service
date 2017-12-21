@@ -1,6 +1,6 @@
-desc "Populate categories and sub categories"
+desc "Update configuration"
 
-task populate: :environment do
+task update_configuration: :environment do
 
 	priorities = {
 		"Low" => 48,
