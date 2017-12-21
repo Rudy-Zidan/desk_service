@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 20171221004935) do
     t.bigint "sub_category_id"
     t.integer "creator_id"
     t.integer "assignee_id"
-    t.string "state"
-    t.json "body"
+    t.string "state", null: false
+    t.json "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assignee_id"], name: "index_lynks_service_desk_tickets_on_assignee_id"

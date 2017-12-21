@@ -5,8 +5,8 @@ class CreateLynksServiceDeskTickets < ActiveRecord::Migration[5.1]
       t.references :sub_category, foreign_key: { to_table: "lynks_service_desk_sub_categories" }
       t.integer :creator_id
       t.integer :assignee_id
-      t.string :state
-      t.json :body
+      t.string :state, null: false
+      t.json :body, null: false
 
       t.timestamps
     end

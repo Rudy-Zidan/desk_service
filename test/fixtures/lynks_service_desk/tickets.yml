@@ -7,8 +7,8 @@
 #  sub_category_id :integer
 #  creator_id      :integer
 #  assignee_id     :integer
-#  state           :string
-#  body            :json
+#  state           :string           not null
+#  body            :json             not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
