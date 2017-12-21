@@ -43,6 +43,7 @@ module LynksServiceDesk
 	# 	"Price Change" =>
 	# 	{
 	# 		"price_before" => Integer,
+	# 		"price_after" => Float,
 	# 		"due_date" => DateTime,
 	# 		"name" => String
 	# 	}
@@ -50,7 +51,18 @@ module LynksServiceDesk
 
 	# @sub_categories_messages expects sub_categories, locales, and the message
 	# example:
-	# {}
+	# {
+	# 	"Price Change" =>
+	# 	{
+	# 	  en: "Hello %name. Price has changed. Was %price_before, now is %price_after.
+	# 			Please pay before %due_date",
+	# 	  es: "Hola %name. El precio ha cambiado. Fue %price_before, ahora es %price_after.
+	# 			 Por favor pague antes %due_date",
+	# 	}
+	# }
+	# 
+	# 
+	# 
 
 
 
