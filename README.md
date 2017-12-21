@@ -1,7 +1,7 @@
 # LynksServiceDesk
 
 ## Database
-![alt text](https://raw.githubusercontent.com/Lynks/LynksServiceDesk/master/erd.png)
+![alt text](https://raw.githubusercontent.com/Lynks/LynksServiceDesk/master/erd.png?token=AT5HIIUGZibAtm7QgXZsfUyEn5o3O6G1ks5aRG0xwA%3D%3D)
 
 ## Usage
 How to use my plugin.
