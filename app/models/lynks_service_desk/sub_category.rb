@@ -16,10 +16,12 @@ module LynksServiceDesk
   class SubCategory < ApplicationRecord
     belongs_to :category
     belongs_to :priority
-    before_save :set_slug
+    has_many :tickets
+
+    before_validation :set_slug
 
     def set_slug
-      slug = slug.parameterize
+      self[:slug] = name.parameterize
     end
 
   end

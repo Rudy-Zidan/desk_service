@@ -13,10 +13,10 @@
 
 module LynksServiceDesk
   class Priority < ApplicationRecord
-    before_save :set_slug
+    before_validation :set_slug
 
     def set_slug
-      slug = slug.parameterize
+      self[:slug] = name.parameterize
     end
 
     def hours
