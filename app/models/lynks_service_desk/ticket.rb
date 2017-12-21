@@ -14,7 +14,7 @@
 
 module LynksServiceDesk
   class Ticket < ApplicationRecord
-    belongs_to :category
     belongs_to :sub_category
+    delegate :category, to: :sub_category, allow_nil: true
   end
 end
