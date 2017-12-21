@@ -104,6 +104,13 @@ class ConfigGenerator < Rails::Generators::Base
   #       "Close" => [["Open", "On Hold"], "Closed"]
   #     }
 
+  # config.custom_scopes expects a hash
+  # default: { "Unresolved" => ["Open", "On Hold"],
+  #        "Resolved" => "Closed"}
+  # config.custom_scopes = {
+  #       "Unresolved" => ["Open", "On Hold"],
+  #       "Resolved" => "Closed"
+  #     }
 
 end
     )

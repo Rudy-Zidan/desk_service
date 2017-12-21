@@ -21,6 +21,10 @@ module LynksServiceDesk
 	      	"Mark as on hold" => ["Open", "On Hold"],
 			"Close" => [["Open", "On Hold"], "Closed"]
 		}
+      @custom_scopes = {
+			"Unresolved" => ["Open", "On Hold"],
+			"Resolved" => "Closed"
+      }
     end
 
     # @ticketable_classes expects an array of models
@@ -102,6 +106,10 @@ module LynksServiceDesk
 	# @state_transitions expects a hash
 	# default: { "Mark as on hold" => ["Open", "On Hold"],
 	# 			 "Close" => [["Open", "On Hold"], "Closed"]}
+
+	# @custom_scopes expects a hash
+	# default: { "Unresolved" => ["Open", "On Hold"],
+	#        "Resolved" => "Closed"}
 
   end
 end
