@@ -19,6 +19,9 @@ module LynksServiceDesk
       slug = slug.parameterize
     end
 
+    def hours
+      self[:hours].hours
+    end
 
   end
 end
