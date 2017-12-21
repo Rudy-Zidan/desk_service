@@ -15,6 +15,7 @@
 module LynksServiceDesk
   class SubCategory < ApplicationRecord
     belongs_to :category
+    belongs_to :priority
     before_save :set_slug
 
     def set_slug
