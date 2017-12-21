@@ -3,7 +3,6 @@
 # Table name: lynks_service_desk_tickets
 #
 #  id              :integer          not null, primary key
-#  category_id     :integer
 #  sub_category_id :integer
 #  creator_id      :integer
 #  assignee_id     :integer
