@@ -1,4 +1,6 @@
 require "lynks_service_desk/engine"
+require "lynks_service_desk/version"
+require "lynks_service_desk/configuration"
 
 module LynksServiceDesk
   class << self
