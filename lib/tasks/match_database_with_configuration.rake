@@ -1,6 +1,8 @@
-desc "Update configuration"
+desc "Match database with updated configuration"
 
-task update_configuration: :environment do
+task match_database_with_configuration: :environment do
+
+	byebug
 
 	priorities = {
 		"Low" => 48,
