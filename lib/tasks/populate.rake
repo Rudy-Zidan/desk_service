@@ -6,7 +6,6 @@ task populate: :environment do
 		"Operations" => {
 			"" => ""
 		}
-		,
 	}
 
 end

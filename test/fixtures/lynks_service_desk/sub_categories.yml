@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  category_id :integer
+#  priority_id :integer
 #  name        :string           default(""), not null
 #  slug        :string           default(""), not null
 #  active      :boolean          default(TRUE), not null

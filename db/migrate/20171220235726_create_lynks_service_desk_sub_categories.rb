@@ -2,6 +2,7 @@ class CreateLynksServiceDeskSubCategories < ActiveRecord::Migration[5.1]
   def change
     create_table :lynks_service_desk_sub_categories do |t|
       t.references :category, foreign_key: { to_table: "lynks_service_desk_categories" }
+      t.references :priority, foreign_key: { to_table: "lynks_service_desk_priorities" }
       t.string :name, null: false, default: ""
       t.string :slug, null: false, default: ""
       t.boolean :active, null: false, default: true

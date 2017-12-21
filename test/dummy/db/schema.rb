@@ -37,8 +37,18 @@ ActiveRecord::Schema.define(version: 20171221004935) do
     t.index ["ticket_id"], name: "index_lynks_service_desk_metrics_on_ticket_id"
   end
 
+  create_table "lynks_service_desk_priorities", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_lynks_service_desk_priorities_on_slug"
+  end
+
   create_table "lynks_service_desk_sub_categories", force: :cascade do |t|
     t.bigint "category_id"
+    t.bigint "priority_id"
     t.string "name", default: "", null: false
     t.string "slug", default: "", null: false
     t.boolean "active", default: true, null: false
@@ -46,6 +56,7 @@ ActiveRecord::Schema.define(version: 20171221004935) do
     t.datetime "updated_at", null: false
     t.index ["active"], name: "index_lynks_service_desk_sub_categories_on_active"
     t.index ["category_id"], name: "index_lynks_service_desk_sub_categories_on_category_id"
+    t.index ["priority_id"], name: "index_lynks_service_desk_sub_categories_on_priority_id"
     t.index ["slug"], name: "index_lynks_service_desk_sub_categories_on_slug"
   end
 
@@ -87,6 +98,7 @@ ActiveRecord::Schema.define(version: 20171221004935) do
 
   add_foreign_key "lynks_service_desk_metrics", "lynks_service_desk_tickets", column: "ticket_id"
   add_foreign_key "lynks_service_desk_sub_categories", "lynks_service_desk_categories", column: "category_id"
+  add_foreign_key "lynks_service_desk_sub_categories", "lynks_service_desk_priorities", column: "priority_id"
   add_foreign_key "lynks_service_desk_ticket_objects", "lynks_service_desk_tickets", column: "ticket_id"
   add_foreign_key "lynks_service_desk_ticket_relation_objects", "lynks_service_desk_tickets", column: "ticket_id"
   add_foreign_key "lynks_service_desk_tickets", "lynks_service_desk_categories", column: "category_id"
