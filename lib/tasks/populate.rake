@@ -18,11 +18,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -31,11 +29,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -44,11 +40,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -57,11 +51,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -70,11 +62,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -83,11 +73,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -96,11 +84,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -109,11 +95,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -122,11 +106,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -135,11 +117,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -148,11 +128,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -161,11 +139,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -174,11 +150,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -187,11 +161,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -200,11 +172,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -213,11 +183,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -226,11 +194,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
@@ -239,11 +205,9 @@ task populate: :environment do
 				priority: "medium",
 				options: {
 					price_before: {
-						required: true,
 						class: Integer
 					},
 					price_after: {
-						required: true,
 						class: [DateTime, Integer]
 					}
 				}
