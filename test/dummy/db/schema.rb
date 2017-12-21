@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20171221004935) do
   create_table "lynks_service_desk_priorities", force: :cascade do |t|
     t.string "name", null: false
     t.string "slug", null: false
+    t.integer "hours", default: 24, null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
