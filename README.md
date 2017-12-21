@@ -1,7 +1,7 @@
 # LynksServiceDesk
 
 ## Database
-![I am a broken image :( in order to fix me, download the erb.png photo, and copy the link with the token, and place it in the readme file :)](https://raw.githubusercontent.com/Lynks/LynksServiceDesk/master/erd.png?token=AT5HIOUN6TnIb3WAJny7l0WaI9DF1wPoks5aRG4_wA%3D%3D)
+![Who removed the erd image file ? :( ](erd.png)
 
 ## Usage
 ```
