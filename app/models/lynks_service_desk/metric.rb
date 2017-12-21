@@ -4,6 +4,7 @@
 #
 #  id                       :integer          not null, primary key
 #  ticket_id                :integer
+#  user_id                  :integer
 #  action                   :string           not null
 #  duration_from_previous   :string           not null
 #  duration                 :string           not null

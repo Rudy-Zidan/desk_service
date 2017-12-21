@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20171221004935) do
 
   create_table "lynks_service_desk_metrics", force: :cascade do |t|
     t.bigint "ticket_id"
+    t.integer "user_id"
     t.string "action", null: false
     t.string "duration_from_previous", null: false
     t.string "duration", null: false
