@@ -1,7 +1,4 @@
-class ConfigGenerator < Rails::Generators::Base
-  def create_initializer_file
-    create_file "config/initializers/lynks_service_desk_config.rb",
-    %s(LynksServiceDesk.configure do |config|
+LynksServiceDesk.configure do |config|
 
   # config.ticketable_classes expects an array of models
   # example: [Order, Item, ItemInstance]
@@ -17,7 +14,7 @@ class ConfigGenerator < Rails::Generators::Base
   #   "low" => 48
   # }
   # 
-  # config.priorities = {
+  # config.ticketable_classes = {
   #  "high" => 12,
   #  "medium" => 24,
   #  "low" => 48
@@ -106,7 +103,4 @@ class ConfigGenerator < Rails::Generators::Base
 
 
 end
-    )
-
-  end
-end
+    
