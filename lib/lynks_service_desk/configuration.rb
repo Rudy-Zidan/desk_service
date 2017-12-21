@@ -94,7 +94,7 @@ module LynksServiceDesk
 	# this will be the default state of any new ticket
 	# default: "Open"
 
-	# @check_for_new_using_new expects a boolean
+	# @check_for_new_using_metrics expects a boolean
 	# this will default all tickets with no metrics to the state "new"
 	# default: true
 	# protip: set this to false if your initial state is "new"
