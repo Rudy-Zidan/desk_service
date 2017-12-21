@@ -77,6 +77,6 @@ module LynksServiceDesk
 	# example:
 	# ["First view", "First customer contact"]
 
-
+	
   end
 end
