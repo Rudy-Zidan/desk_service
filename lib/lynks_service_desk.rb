@@ -16,4 +16,5 @@ module LynksServiceDesk
   def self.configure
     yield(configuration)
   end
+
 end
