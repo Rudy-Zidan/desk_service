@@ -14,7 +14,7 @@ LynksServiceDesk.configure do |config|
   #   "low" => 48
   # }
   # 
-  # config.ticketable_classes = {
+  # config.priorities = {
   #  "high" => 12,
   #  "medium" => 24,
   #  "low" => 48
