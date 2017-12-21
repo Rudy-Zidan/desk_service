@@ -2,8 +2,8 @@ class CreateLynksServiceDeskTicketRelationObjects < ActiveRecord::Migration[5.1]
   def change
     create_table :lynks_service_desk_ticket_relation_objects do |t|
       t.references :ticket, foreign_key: { to_table: "lynks_service_desk_tickets" }
-      t.integer :relation_object_id
-      t.string :relation_object_type
+      t.integer :relation_object_id, null: false
+      t.string :relation_object_type, null: false
 
       t.timestamps
     end

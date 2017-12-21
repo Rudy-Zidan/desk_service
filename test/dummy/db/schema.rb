@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20171221002728) do
 
   create_table "lynks_service_desk_ticket_relation_objects", force: :cascade do |t|
     t.bigint "ticket_id"
-    t.integer "relation_object_id"
-    t.string "relation_object_type"
+    t.integer "relation_object_id", null: false
+    t.string "relation_object_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["relation_object_id", "relation_object_type"], name: "index_lynks_service_desk_relation_object_relation_object"
