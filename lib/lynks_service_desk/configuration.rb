@@ -1,13 +1,14 @@
 module LynksServiceDesk
   class Configuration
     attr_accessor :ticketable_classes, :priorities, :tickets_types,
-    			  :sub_categories_options
+                  :sub_categories_parameters, :sub_categories_messages
 
     def initialize
       @ticketable_classes = []
       @priorities = {}
       @tickets_types = {}
-      @sub_categories_options = {}
+      @sub_categories_parameters = {}
+      @sub_categories_messages = {}
     end
 
     # @ticketable_classes expects an array of models
@@ -33,6 +34,25 @@ module LynksServiceDesk
 	# 		"Another Sub Category" => "low"
 	#   }
 	# }
+
+	# @sub_categories_parameters expects sub_categories, and parameters names
+	# and types that will be allowed.
+	# note: all these fields are mandatory
+	# example:
+	# {
+	# 	"Price Change" =>
+	# 	{
+	# 		"price_before" => Integer,
+	# 		"due_date" => DateTime,
+	# 		"name" => String
+	# 	}
+	# }
+
+	# @sub_categories_messages expects sub_categories, locales, and the message
+	# example:
+	# {}
+
+
 
 
 
