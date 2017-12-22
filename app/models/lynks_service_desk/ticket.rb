@@ -25,7 +25,6 @@ module LynksServiceDesk
       Formatter.other_states.each{|state_symbol| state state_symbol}
 
       
-
     end
 
   end
