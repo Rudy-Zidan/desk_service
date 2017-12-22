@@ -119,6 +119,5 @@ module LynksServiceDesk
 	# 	"Comment" => [:user_id, :body] }
 	# note: :created_at is automatically added
 
-	
   end
 end
