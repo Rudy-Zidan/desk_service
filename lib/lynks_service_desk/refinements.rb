@@ -9,6 +9,10 @@ module LynksServiceDesk
       def syminize
         dehumanize.to_sym
       end
+
+      def to_a
+        return [self]
+      end
     end
 
     refine Symbol do
@@ -18,7 +22,6 @@ module LynksServiceDesk
         end
       end
     end
-
 
 
 

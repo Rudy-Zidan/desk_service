@@ -7,7 +7,9 @@ module LynksServiceDesk
       initial_state.syminize
     end
 
-
+    def self.test
+      byebug
+    end
 
 
 
