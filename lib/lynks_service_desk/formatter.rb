@@ -7,8 +7,8 @@ module LynksServiceDesk
       initial_state.syminize
     end
 
-    def self.test
-      byebug
+    def self.other_states
+      state_transitions.values.map(&:second).map{|s| s.syminize}
     end
 
 

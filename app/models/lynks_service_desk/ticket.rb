@@ -21,7 +21,10 @@ module LynksServiceDesk
     delegate :category, to: :sub_category, allow_nil: true
 
     aasm :state, column: "state" do
-      state :open, initial: true
+      state Formatter.initial_state_symbol, initial: true
+
+      
+
     end
 
   end

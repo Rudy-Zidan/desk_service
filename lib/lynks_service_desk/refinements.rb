@@ -23,10 +23,17 @@ module LynksServiceDesk
       end
     end
 
-
-
+    refine Array do
+      [:humanize, :titleize, :to_sym, :to_s].each do |method_name|
+        define_method method_name do
+          map{|element| element.send(method_name)}
+        end
+      end
+    end
 
 
     using LynksServiceDesk::Refinements
+
+
   end
  end
