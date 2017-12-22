@@ -34,7 +34,7 @@ module LynksServiceDesk
     end
 
     def self.save_state_transitions_metrics?
-      
+      record_state_transitions_as_metrics
     end
 
     def self.method_missing(meth, *args, &block)

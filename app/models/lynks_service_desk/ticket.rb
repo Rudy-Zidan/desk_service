@@ -46,9 +46,9 @@ module LynksServiceDesk
 
     def apply_state_transition!
       if state_transition.present?
-        send(state_transition.to_s + "!")
+        self.send(state_transition.to_s + "!")
         if Formatter.save_state_transitions_metrics?
-          metrics.create(user_id: user_id, action: state_transition)
+          self.metrics.create(user_id: self.user_id, action: self.state_transition)
         end
       end
 
