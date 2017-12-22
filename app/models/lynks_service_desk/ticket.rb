@@ -22,8 +22,8 @@ module LynksServiceDesk
     has_many :metrics
     delegate :category, to: :sub_category
 
-    # just in case, i added the second condition, so as to not override the state scope
-    if Formatter.unopened_using_metrics? && !self.aasm(:state).states.map(&:name).include?("unopened")
+    # just in case, i added the second condition, so as to not override the default state scope
+    if Formatter.unopened_using_metrics? && !self.respond_to?(:unopened)
       scope :unopened, -> () { where(state: Formatter.initial_state_symbol)
                          .left_joins(:metrics)
                          .where(lynks_service_desk_metrics: {id: nil}) }
