@@ -36,8 +36,8 @@ module LynksServiceDesk
       end
     end
 
-    def self.new_using_metrics?
-      check_for_new_using_metrics
+    def self.unopened_using_metrics?
+      check_for_unopened_using_metrics
     end
 
   end

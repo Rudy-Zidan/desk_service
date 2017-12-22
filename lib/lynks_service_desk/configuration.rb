@@ -4,7 +4,7 @@ module LynksServiceDesk
                   :sub_categories_parameters, :sub_categories_messages,
                   :record_state_transitions_as_metrics,
                   :allowed_metric_types, :initial_state,
-                  :check_for_new_using_metrics,
+                  :check_for_unopened_using_metrics,
                   :state_transitions
 
     def initialize
@@ -16,7 +16,7 @@ module LynksServiceDesk
       @record_state_transitions_as_metrics = true
       @allowed_metric_types = []
       @initial_state = "Open"
-      @check_for_new_using_metrics = true
+      @check_for_unopened_using_metrics = true
       @state_transitions = { 
 	      	"Mark as on hold" => ["Open", "On Hold"],
 			"Close" => [["Open", "On Hold"], "Closed"]
@@ -98,7 +98,7 @@ module LynksServiceDesk
 	# this will be the default state of any new ticket
 	# default: "Open"
 
-	# @check_for_new_using_metrics expects a boolean
+	# @check_for_unopened_using_metrics expects a boolean
 	# this will default all tickets with no metrics to the state "new"
 	# default: true
 	# protip: set this to false if your initial state is "new"

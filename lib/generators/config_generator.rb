@@ -89,11 +89,11 @@ class ConfigGenerator < Rails::Generators::Base
   # config.initial_state = "Open"
 
 
-  # config.check_for_new_using_metrics expects a boolean
+  # config.check_for_unopened_using_metrics expects a boolean
   # this will default all tickets with no metrics to the state "new"
   # protip: set this to false if your initial state is "new"
   # default: true
-  # config.check_for_new_using_metrics = true
+  # config.check_for_unopened_using_metrics = true
 
 
   # config.state_transitions expects a hash
