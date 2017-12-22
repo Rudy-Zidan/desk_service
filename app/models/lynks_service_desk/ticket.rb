@@ -12,9 +12,10 @@
 #  updated_at      :datetime         not null
 #
 
-require 'aasm'
 
 module LynksServiceDesk
+  require 'aasm'
+
   class Ticket < ApplicationRecord
   	include AASM
     belongs_to :sub_category
@@ -24,7 +25,7 @@ module LynksServiceDesk
       state Formatter.initial_state_symbol, initial: true
       Formatter.other_states.each{|state_symbol| state state_symbol}
 
-      
+
     end
 
   end
