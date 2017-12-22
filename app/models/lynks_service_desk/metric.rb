@@ -17,6 +17,7 @@ module LynksServiceDesk
     belongs_to :ticket
     default_scope { order(created_at: :asc) }
     before_validation :populate_durations
+    validate :metric_allowed?
 
     def populate_durations
 
@@ -31,5 +32,8 @@ module LynksServiceDesk
       self
     end
 
+    def metric_allowed?
+
+    end
   end
 end
