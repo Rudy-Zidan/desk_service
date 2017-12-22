@@ -16,6 +16,18 @@ module LynksServiceDesk
       byebug
     end
 
+    def self.state_transitions_hash_for_aasm
+      array_of_hashes = []
+      state_transitions.map do |k,v|
+        values_hash = {}
+        values_hash[:event_name] = k.syminize
+        values_hash[:from] = v.first.to_a.map{|s| s.syminize}
+        values_hash[:to] = v.second.syminize
+        array_of_hashes << values_hash
+      end
+      array_of_hashes
+    end
+
     def self.method_missing(meth, *args, &block)
       if parent.configuration.respond_to? meth
         parent.configuration.send(meth)

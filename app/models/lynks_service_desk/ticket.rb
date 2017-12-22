@@ -25,6 +25,11 @@ module LynksServiceDesk
       state Formatter.initial_state_symbol, initial: true
       Formatter.other_states.each{|state_symbol| state state_symbol}
 
+      Formatter.state_transitions_hash_for_aasm.each do |transition_hash|
+        event transition_hash[:event_name] do
+          transitions from: transition_hash[:from], to: transition_hash[:to] 
+        end
+      end
 
     end
 
