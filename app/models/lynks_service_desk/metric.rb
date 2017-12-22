@@ -15,7 +15,7 @@
 module LynksServiceDesk
   class Metric < ApplicationRecord
     belongs_to :ticket
-    default_scope { order("created_at ASC") }
+    default_scope { order(created_at: :asc) }
     before_validation :populate_durations
   end
 end
