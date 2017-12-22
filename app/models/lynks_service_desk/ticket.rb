@@ -23,9 +23,9 @@ module LynksServiceDesk
     delegate :category, to: :sub_category
 
     if Formatter.new_using_metrics?
-      scope :new, -> () { where(state: Formatter.initial_state_symbol)
-                         .join(:metrics)
-                         .where(metrics: nil)}
+      scope :unopened, -> () { where(state: Formatter.initial_state_symbol)
+                         .left_joins(:metrics)
+                         .where(lynks_service_desk_metrics: {id: nil}) }
     end
 
     aasm :state, column: "state" do
