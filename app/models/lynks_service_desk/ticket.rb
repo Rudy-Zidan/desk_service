@@ -19,7 +19,8 @@ module LynksServiceDesk
   class Ticket < ApplicationRecord
   	include AASM
     belongs_to :sub_category
-    delegate :category, to: :sub_category, allow_nil: true
+    has_many :metrics
+    delegate :category, to: :sub_category
 
     aasm :state, column: "state" do
       state Formatter.initial_state_symbol, initial: true
