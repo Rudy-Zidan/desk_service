@@ -37,6 +37,10 @@ module LynksServiceDesk
       record_state_transitions_as_metrics
     end
 
+    def self.allowed_metrics
+      allowed_metric_types.map{|s| s.syminize}
+    end
+
     def self.method_missing(meth, *args, &block)
       if parent.configuration.respond_to? meth
         parent.configuration.send(meth)

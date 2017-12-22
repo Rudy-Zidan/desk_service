@@ -33,7 +33,8 @@ module LynksServiceDesk
     end
 
     def metric_allowed?
-
+      allowed = self.ticket.aasm.events.map(&:name) + Formatter.allowed_metrics
+      allowed.include?(self.action.to_sym)
     end
   end
 end
