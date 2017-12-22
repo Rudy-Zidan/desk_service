@@ -5,7 +5,7 @@ module LynksServiceDesk
                   :record_state_transitions_as_metrics,
                   :allowed_metric_types, :initial_state,
                   :check_for_unopened_using_metrics,
-                  :state_transitions
+                  :state_transitions, :ticket_objects
 
     def initialize
       @ticketable_classes = []
