@@ -22,6 +22,12 @@ module LynksServiceDesk
     has_many :metrics
     delegate :category, to: :sub_category
 
+    if Formatter.new_using_metrics?
+      scope :new, -> () { where(state: Formatter.initial_state_symbol)
+                         .join(:metrics)
+                         .where(metrics: nil)}
+    end
+
     aasm :state, column: "state" do
       state Formatter.initial_state_symbol, initial: true
       Formatter.other_states.each{|state_symbol| state state_symbol}
