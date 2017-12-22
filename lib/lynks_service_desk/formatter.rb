@@ -28,16 +28,21 @@ module LynksServiceDesk
       array_of_hashes
     end
 
+
+    def self.unopened_using_metrics?
+      check_for_unopened_using_metrics
+    end
+
+    def self.save_state_transitions_metrics?
+      
+    end
+
     def self.method_missing(meth, *args, &block)
       if parent.configuration.respond_to? meth
         parent.configuration.send(meth)
       else
         super
       end
-    end
-
-    def self.unopened_using_metrics?
-      check_for_unopened_using_metrics
     end
 
   end
