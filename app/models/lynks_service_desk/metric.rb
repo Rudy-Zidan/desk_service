@@ -17,5 +17,18 @@ module LynksServiceDesk
     belongs_to :ticket
     default_scope { order(created_at: :asc) }
     before_validation :populate_durations
+
+    def populate_durations
+
+      duration_from_creation = Time.zone.now - self.ticket.created_at
+      if self.ticket.metrics.exists?
+        self[:duration_from_previous] = Time.zone.now - self.ticket.metrics.last.created_at.to_i
+      else
+        self[:duration_from_previous] = duration_from_creation
+      end
+      self[:duration_from_created_at] = duration_from_creation
+
+      self
+    end
   end
 end
