@@ -12,10 +12,9 @@ module LynksServiceDesk
       state_transitions.values.map(&:second).map{|s| s.syminize}
     end
 
-
-
-
-
+    def self.test
+      byebug
+    end
 
     def self.method_missing(meth, *args, &block)
       if parent.configuration.respond_to? meth
