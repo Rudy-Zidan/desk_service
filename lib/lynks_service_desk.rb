@@ -1,8 +1,8 @@
 require "lynks_service_desk/engine"
 require "lynks_service_desk/version"
 require "lynks_service_desk/configuration"
-require "lynks_service_desk/formatter"
 require "lynks_service_desk/refinements"
+require "lynks_service_desk/formatter"
 
 module LynksServiceDesk
   class << self
