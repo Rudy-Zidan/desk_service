@@ -30,5 +30,6 @@ module LynksServiceDesk
 
       self
     end
+
   end
 end
