@@ -25,6 +25,9 @@ module LynksServiceDesk
 			"Unresolved" => ["Open", "On Hold"],
 			"Resolved" => "Closed"
       }
+      @ticket_objects = {
+        "Comment" => [:user_id, :body]
+      }
     end
 
     # @ticketable_classes expects an array of models
@@ -110,6 +113,11 @@ module LynksServiceDesk
 	# @custom_scopes expects a hash
 	# default: { "Unresolved" => ["Open", "On Hold"],
 	#        "Resolved" => "Closed"}
+
+	# @ticket_objects expects a hash
+	# default:       @ticket_objects = {
+	# 	"Comment" => [:user_id, :body] }
+	# note: :created_at is automatically added
 
 	
   end
