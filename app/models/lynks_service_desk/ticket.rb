@@ -19,7 +19,7 @@ module LynksServiceDesk
   class Ticket < ApplicationRecord
   	include AASM
 
-    attr_accessor :state_transition
+    attr_accessor :state_transition, :user_id
     before_save :apply_state_transition!
 
     belongs_to :sub_category
@@ -46,9 +46,12 @@ module LynksServiceDesk
 
     def apply_state_transition!
       if state_transition.present?
-        self.send(state_transition.to_s + "!")
-        if self.
+        send(state_transition.to_s + "!")
+        if Formatter.save_state_transitions_metrics?
+          metrics.create(user_id: user_id, action: state_transition)
+        end
       end
+
       self
     end
 
