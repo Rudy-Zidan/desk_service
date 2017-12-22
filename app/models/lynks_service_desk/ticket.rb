@@ -12,6 +12,8 @@
 #  updated_at      :datetime         not null
 #
 
+require 'aasm'
+
 module LynksServiceDesk
   class Ticket < ApplicationRecord
   	include AASM

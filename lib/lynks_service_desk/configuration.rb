@@ -15,7 +15,7 @@ module LynksServiceDesk
       @sub_categories_messages = {}
       @record_state_transitions_as_metrics = true
       @allowed_metric_types = []
-      @initial_state = "open"
+      @initial_state = "Open"
       @check_for_new_using_metrics = true
       @state_transitions = { 
 	      	"Mark as on hold" => ["Open", "On Hold"],
@@ -111,5 +111,6 @@ module LynksServiceDesk
 	# default: { "Unresolved" => ["Open", "On Hold"],
 	#        "Resolved" => "Closed"}
 
+	
   end
 end
