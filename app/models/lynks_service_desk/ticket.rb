@@ -22,8 +22,8 @@ module LynksServiceDesk
 
     aasm :state, column: "state" do
       state Formatter.initial_state_symbol, initial: true
+      Formatter.other_states.each{|state_symbol| state state_symbol}
 
-      
 
     end
 
