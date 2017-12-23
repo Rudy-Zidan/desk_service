@@ -4,7 +4,9 @@ module LynksServiceDesk
       module MatchDatabaseTask
         using LynksServiceDesk::Refinements
 
-
+        def active_priorities
+          
+        end
 
 
 
