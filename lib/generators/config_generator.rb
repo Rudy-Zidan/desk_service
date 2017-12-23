@@ -112,6 +112,11 @@ class ConfigGenerator < Rails::Generators::Base
   #       "Resolved" => "Closed"
   #     }
 
+  # config.ticket_objects expects a hash
+  # default: { "Comment" => [:user_id, :body] }
+  # note: :created_at is automatically added
+  # config.ticket_objects = { "Comment" => [:user_id, :body] }
+
 end
     )
 

@@ -87,8 +87,8 @@ LynksServiceDesk.configure do |config|
 
 
   # config.check_for_unopened_using_metrics expects a boolean
-  # this will default all tickets with no metrics to the state "unopened"
-  # protip: set this to false if your initial state is "unopened"
+  # this will default all tickets with no metrics to the state "new"
+  # protip: set this to false if your initial state is "new"
   # default: true
   # config.check_for_unopened_using_metrics = true
 
@@ -108,6 +108,11 @@ LynksServiceDesk.configure do |config|
   #       "Unresolved" => ["Open", "On Hold"],
   #       "Resolved" => "Closed"
   #     }
+
+  # config.ticket_objects expects a hash
+  # default: { "Comment" => [:user_id, :body] }
+  # note: :created_at is automatically added
+  # config.ticket_objects = { "Comment" => [:user_id, :body] }
 
 end
     
