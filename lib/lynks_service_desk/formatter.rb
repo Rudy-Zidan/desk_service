@@ -2,7 +2,6 @@ module LynksServiceDesk
   module Formatter
     using LynksServiceDesk::Refinements
 
-
     def self.initial_state_symbol
       initial_state.syminize
     end
