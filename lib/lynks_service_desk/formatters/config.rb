@@ -42,6 +42,7 @@ module LynksServiceDesk
         allowed_metric_types.map{|s| s.syminize}
       end
 
+      #instead of typing LynksServiceDesk.configuration every time
       def self.method_missing(meth, *args, &block)
         if parent.parent.configuration.respond_to? meth
           parent.parent.configuration.send(meth)
