@@ -44,8 +44,8 @@ module LynksServiceDesk
 
       #instead of typing LynksServiceDesk.configuration every time
       def self.method_missing(meth, *args, &block)
-        if parent.parent.configuration.respond_to? meth
-          parent.parent.configuration.send(meth)
+        if LynksServiceDesk.configuration.respond_to? meth
+          LynksServiceDesk.configuration.send(meth)
         else
           super
         end
