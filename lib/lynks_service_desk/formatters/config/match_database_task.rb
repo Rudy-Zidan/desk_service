@@ -4,11 +4,19 @@ module LynksServiceDesk
       module MatchDatabaseTask
         using LynksServiceDesk::Refinements
 
-        def active_priorities
-          
+        def priorities_to_match
+          priorities.map do |name, no_of_hours| 
+            {
+              name: name.titleize, 
+              slug: name.to_s.dehumanize,
+              hours: hours.to_i
+            }
+          end
         end
 
+        def categories_to_match
 
+        end
 
 
         #instead of typing LynksServiceDesk.configuration every time
