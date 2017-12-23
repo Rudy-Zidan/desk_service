@@ -8,7 +8,7 @@ module LynksServiceDesk
 
     def self.other_states
       # refining syminize in array does not work for some reason
-      state_transitions.values.map(&:second).map{|s| s.syminize}
+      state_transitions.values.map(&:second).map{|s| s.syminize}.uniq
     end
 
     def self.test
