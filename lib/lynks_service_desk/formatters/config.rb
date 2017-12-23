@@ -1,6 +1,54 @@
 module LynksServiceDesk
   module Formatters
     module Config
+ 
+      using LynksServiceDesk::Refinements
+
+      def self.initial_state_symbol
+        initial_state.syminize
+      end
+
+      def self.other_states
+        # refining syminize in array does not work for some reason
+        state_transitions.values.map(&:second).map{|s| s.syminize}.uniq
+      end
+
+      def self.test
+        byebug
+      end
+
+      def self.state_transitions_hash_for_aasm
+        array_of_hashes = []
+        state_transitions.map do |k,v|
+          values_hash = {}
+          values_hash[:event_name] = k.syminize
+          values_hash[:from] = v.first.to_a.map{|s| s.syminize}
+          values_hash[:to] = v.second.syminize
+          array_of_hashes << values_hash
+        end
+        array_of_hashes
+      end
+
+
+      def self.unopened_using_metrics?
+        check_for_unopened_using_metrics
+      end
+
+      def self.save_state_transitions_metrics?
+        record_state_transitions_as_metrics
+      end
+
+      def self.allowed_metrics
+        allowed_metric_types.map{|s| s.syminize}
+      end
+
+      def self.method_missing(meth, *args, &block)
+        if parent.parent.configuration.respond_to? meth
+          parent.parent.configuration.send(meth)
+        else
+          super
+        end
+      end
 
     end
   end
