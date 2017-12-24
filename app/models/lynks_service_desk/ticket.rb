@@ -55,8 +55,27 @@ module LynksServiceDesk
       self
     end
 
+    def state
+      if Formatters::Config.unopened_using_metrics? && !self.metrics.exists?
+        return "unopened"
+      else
+        return self.aasm(:state).current_state.to_s
+      end
+    end
+
     def hash_format
-      
+      return {
+        id: id,
+        sub_category: sub_category.hash_format,
+        category: sub_category.category.hash_format,
+        priority: sub_category.priority.hash_format,
+        creator_id: creator_id,
+        assignee_id: assignee_id,
+        state: state,
+        body: JSON.parse(body),
+        created_at: created_at,
+        updated_at: updated_at,
+      }
     end
 
     def json_format
