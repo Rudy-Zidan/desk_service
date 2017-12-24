@@ -14,7 +14,7 @@ module LynksServiceDesk
 
     def new
       respond_to do |format|
-        format.json { render json: LynksServiceDesk::Category.all.json_format }
+        format.json { render json: LynksServiceDesk::Category.all.map(&:json_format) }
       end
     end
 

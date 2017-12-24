@@ -3,7 +3,7 @@ module LynksServiceDesk
 
     self.abstract_class = true
 
-    CONFIG_FORMATTER = LynksServiceDesk::Formatters::Config
+    CONFIG = LynksServiceDesk::Formatters::Config
 
 	def hash_format
 		LynksServiceDesk::Formatters::Model.hash_format(self)

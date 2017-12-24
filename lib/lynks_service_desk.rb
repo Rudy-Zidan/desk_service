@@ -2,7 +2,10 @@ require "lynks_service_desk/engine"
 require "lynks_service_desk/configuration"
 require "lynks_service_desk/refinements"
 require "lynks_service_desk/formatters/config"
-Dir["lib/lynks_service_desk/**/*.rb"].each{|f| require f.gsub("lib/", "")}
+require "lynks_service_desk/formatters/model"
+Dir[File.join(__dir__, "/lib/**/*.rb")].each do |file|
+  require file
+end
 
 module LynksServiceDesk
   class << self
