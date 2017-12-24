@@ -4,7 +4,7 @@ class ConfigGenerator < Rails::Generators::Base
     %s(LynksServiceDesk.configure do |config|
 
   # config.ticketable_classes expects an array of models
-  # example: [Order, Item, ItemInstance]
+  # example: ["Order", "Item", "ItemInstance"]
   # default: []
   config.ticketable_classes = []
 

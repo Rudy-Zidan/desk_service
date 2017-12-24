@@ -21,6 +21,7 @@ module LynksServiceDesk
 
     attr_accessor :state_transition, :user_id
     before_save :apply_state_transition!
+    after_save :save_relation_objects!
 
     belongs_to :sub_category
     has_many :metrics
@@ -72,5 +73,7 @@ module LynksServiceDesk
     def default_body
       body_hash = {}
     end
+
+    
   end
 end

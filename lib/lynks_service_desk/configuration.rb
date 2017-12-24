@@ -31,7 +31,7 @@ module LynksServiceDesk
     end
 
     # @ticketable_classes expects an array of models
-    # example: [Order, Item, ItemInstance]
+    # example: ["Order", "Item", "ItemInstance"]
     # default: []
 
     # @priorities expects a hash containing name, and number of hours

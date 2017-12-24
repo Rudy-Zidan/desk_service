@@ -42,6 +42,10 @@ module LynksServiceDesk
         allowed_metric_types.map{|s| s.syminize}
       end
 
+      def self.allowed_relation_objects_attributes
+        
+      end
+
       #instead of typing LynksServiceDesk.configuration every time
       def self.method_missing(meth, *args, &block)
         if LynksServiceDesk.configuration.respond_to? meth
