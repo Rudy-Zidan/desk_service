@@ -27,17 +27,17 @@ module LynksServiceDesk
     delegate :category, to: :sub_category
 
     # just in case, i added the second condition, so as to not override the default state scope
-    if Formatters::Configunopened_using_metrics? && !self.respond_to?(:unopened)
-      scope :unopened, -> () { where(state: Formatters::Configinitial_state_symbol)
+    if Formatters::Config.unopened_using_metrics? && !self.respond_to?(:unopened)
+      scope :unopened, -> () { where(state: Formatters::Config.initial_state_symbol)
                          .left_joins(:metrics)
                          .where(lynks_service_desk_metrics: {id: nil}) }
     end
 
     aasm :state, column: "state" do
-      state Formatters::Configinitial_state_symbol, initial: true
-      Formatters::Configother_states.each{|state_symbol| state state_symbol}
+      state Formatters::Config.initial_state_symbol, initial: true
+      Formatters::Config.other_states.each{|state_symbol| state state_symbol}
 
-      Formatters::Configstate_transitions_hash_for_aasm.each do |transition_hash|
+      Formatters::Config.state_transitions_hash_for_aasm.each do |transition_hash|
         event transition_hash[:event_name] do
           transitions from: transition_hash[:from], to: transition_hash[:to] 
         end
@@ -47,7 +47,7 @@ module LynksServiceDesk
     def apply_state_transition!
       if state_transition.present?
         self.send(state_transition.to_s + "!")
-        if Formatters::Configsave_state_transitions_metrics?
+        if Formatters::Config.save_state_transitions_metrics?
           self.metrics.create(user_id: self.user_id, action: self.state_transition)
         end
       end
