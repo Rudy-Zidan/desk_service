@@ -7,7 +7,6 @@ module LynksServiceDesk
       end
 
       def self.get_object_formatter(object)
-        byebug
         return "LynksServiceDesk::Formatters::Models::#{object.class.to_s.split("::")[1]}".constantize
       end
 
