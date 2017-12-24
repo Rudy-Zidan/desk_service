@@ -36,5 +36,6 @@ module LynksServiceDesk
       allowed = self.ticket.aasm.events.map(&:name) + Formatters::Config.allowed_metrics
       allowed.include?(self.action.to_sym)
     end
+
   end
 end
