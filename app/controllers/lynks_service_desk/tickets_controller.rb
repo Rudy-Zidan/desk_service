@@ -1,7 +1,7 @@
 module LynksServiceDesk
   class TicketsController < ApplicationController
-
-    before_action :set_ticket, only: [:show, :update, :create]
+    skip_before_action :verify_authenticity_token
+    before_action :set_ticket, only: [:show, :update]
 
     CONFIG = LynksServiceDesk::Formatters::Config
 
@@ -48,8 +48,8 @@ module LynksServiceDesk
     def create
       category = find_sub_category
 
-    rescue => ActionController::RoutingError
-      byebug
+    # rescue ActionController::RoutingError => e
+    #   byebug
     end
 
     def find_sub_category
