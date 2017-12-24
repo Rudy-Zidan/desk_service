@@ -20,6 +20,11 @@ module LynksServiceDesk
   	include AASM
 
     FORMATTER_CLASS = LynksServiceDesk::Formatters::Models::Ticket
+    [:hash_format, :json_format].each do |format_type|
+      define_method format_type do
+        FORMATTER_CLASS.send(format_type, self)
+      end
+    end
 
     attr_accessor :state_transition, :user_id
     before_save :apply_state_transition!
@@ -65,24 +70,6 @@ module LynksServiceDesk
       end
     end
 
-    def hash_format
-      return {
-        id: id,
-        sub_category: sub_category.hash_format,
-        category: sub_category.category.hash_format,
-        priority: sub_category.priority.hash_format,
-        creator_id: creator_id,
-        assignee_id: assignee_id,
-        state: state,
-        body: JSON.parse(body),
-        created_at: created_at,
-        updated_at: updated_at,
-      }
-    end
-
-    def json_format
-      return hash_format.to_json
-    end
 
   end
 end

@@ -5,6 +5,7 @@ module LynksServiceDesk
 
         using LynksServiceDesk::Refinements
 
+
         def self.hash_format(ticket)
           {
             id: ticket.id,
