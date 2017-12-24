@@ -3,10 +3,24 @@ module LynksServiceDesk
 
     before_action :set_ticket, only: [:show, :update, :create]
 
+    CONFIG = LynksServiceDesk::Formatters::Config
+
     def index
+      page = params[:page] || 1
+      limit = params[:limit] || 30
+      scope = params[:scope]
+
+      if scope.present? && LynksServiceDesk::Ticket.respond_to?(scope)
+        @tickets = LynksServiceDesk::Ticket.send(scope).page(page).per(limit)
+        # although we can chain page and per, it is better this way
+        # or else, the tickets will load all of the tickets in the scope which
+        # may be a lot
+      else
+        @tickets = LynksServiceDesk::Ticket.page(page).per(limit)
+      end
 
       respond_to do |format|
-        format.json { render json: {}}
+        format.json { render json: @tickets.map{|t| t.hash_format}.to_json}
       end
     end
 
@@ -22,7 +36,7 @@ module LynksServiceDesk
 
     def show
       respond_to do |format|
-        format.json { render json: LynksServiceDesk::Category.all.map(&:hash) }
+
       end
     end
 

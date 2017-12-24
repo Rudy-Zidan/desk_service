@@ -22,7 +22,7 @@ module LynksServiceDesk
     attr_accessor :state_transition, :user_id, *CONFIG.allowed_relation_objects_attributes
     before_save :apply_state_transition!
     after_save :save_relation_objects!
-
+    default_scope -> () {order(created_at: :DESC)}
     belongs_to :sub_category
     has_many :metrics
     has_many :objects, class_name: "LynksServiceDesk::TicketRelationObject"

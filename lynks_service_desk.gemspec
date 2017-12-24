@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 5.1.4'
   s.add_dependency 'aasm'
+  s.add_dependency 'kaminari'
 
   s.add_development_dependency 'pg'
   s.add_development_dependency 'yard'
