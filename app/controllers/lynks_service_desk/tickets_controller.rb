@@ -6,9 +6,10 @@ module LynksServiceDesk
     CONFIG = LynksServiceDesk::Formatters::Config
 
     def index
-      page = params[:page] || 1
-      limit = params[:limit] || 30
-      scope = params[:scope]
+      permitted_params = params.permit(:page, :limit, :scope)
+      page = permitted_params[:page] || 1
+      limit = permitted_params[:limit] || 30
+      scope = permitted_params[:scope]
 
       if scope.present? && LynksServiceDesk::Ticket.respond_to?(scope)
         @tickets = LynksServiceDesk::Ticket.send(scope).page(page).per(limit)
@@ -45,7 +46,21 @@ module LynksServiceDesk
     end
 
     def create
+      category = find_sub_category
 
+    rescue => ActionController::RoutingError
+      byebug
+    end
+
+    def find_sub_category
+      sub_category_params = params.require(:sub_category).permit(:name, :slug)
+      sub_category_slug = sub_category_params[:name].parameterize.underscore 
+      sub_category_slug ||= sub_category_params[:name]
+      sub_category = LynksServiceDesk::SubCategory.find_by_slug(sub_category_slug)
+      if sub_category.blank?
+        raise ActionController::RoutingError.new("Could not find sub category with slug #{sub_category_slug}")
+      end
+      sub_category
     end
 
     def set_ticket
