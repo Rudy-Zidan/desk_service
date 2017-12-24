@@ -43,7 +43,7 @@ module LynksServiceDesk
       end
 
       def self.allowed_relation_objects_attributes
-        
+        ticketable_classes.map{|class_name| class_name.underscore + "_id"}
       end
 
       #instead of typing LynksServiceDesk.configuration every time

@@ -3,7 +3,7 @@ LynksServiceDesk.configure do |config|
   # config.ticketable_classes expects an array of models
   # example: ["Order", "Item", "ItemInstance"]
   # default: []
-  config.ticketable_classes = []
+  config.ticketable_classes = ["Order"]
 
 
   # config.priorities expects a hash containing name, and number of hours
