@@ -34,7 +34,7 @@ module LynksServiceDesk
                 slug: sub_category_name.dehumanize,
                 category_id: LynksServiceDesk::Category.find_by_slug(category_name.dehumanize).try(:id),
                 priority_id: LynksServiceDesk::Priority.find_by_slug(priority_name.dehumanize).try(:id),
-                options: options_for(sub_category_name).to_json
+                options: options_for(sub_category_name)
               }
             end
           end
