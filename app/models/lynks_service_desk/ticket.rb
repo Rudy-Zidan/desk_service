@@ -18,6 +18,7 @@ module LynksServiceDesk
 
   class Ticket < ApplicationRecord
   	include AASM
+
     FORMATTER_CLASS = LynksServiceDesk::Formatters::Models::Ticket
 
     attr_accessor :state_transition, :user_id
