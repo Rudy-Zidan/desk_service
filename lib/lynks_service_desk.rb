@@ -1,11 +1,4 @@
-require "lynks_service_desk/engine"
-require "lynks_service_desk/version"
-require "lynks_service_desk/configuration"
-require "lynks_service_desk/refinements"
-require "lynks_service_desk/formatters/config"
-require "lynks_service_desk/formatters/config/match_database_task"
-require "lynks_service_desk/formatters/model"
-require "lynks_service_desk/formatters/controller"
+require "lynks_service_desk/*"
 
 module LynksServiceDesk
   class << self
