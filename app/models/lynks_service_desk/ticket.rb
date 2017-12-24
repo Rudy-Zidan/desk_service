@@ -55,5 +55,11 @@ module LynksServiceDesk
       self
     end
 
+    def json_format
+      return {
+        
+      }.to_json
+    end
+
   end
 end
