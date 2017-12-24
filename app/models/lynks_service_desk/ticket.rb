@@ -18,7 +18,7 @@ module LynksServiceDesk
 
   class Ticket < ApplicationRecord
   	include AASM
-    
+
     attr_accessor :state_transition, :user_id
     before_save :apply_state_transition!
 
@@ -56,7 +56,7 @@ module LynksServiceDesk
     end
 
     def state
-      if Formatters::Config.unopened_using_metrics? && !self.metrics.exists?
+      if Formatters::Config.unopened_using_metrics? && ( !self.persisted? || !self.metrics.exists?)
         return "unopened"
       else
         return self.aasm(:state).current_state.to_s
