@@ -20,7 +20,7 @@ module LynksServiceDesk
   	include AASM
 
     attr_accessor :state_transition, :user_id
-    before_save :apply_state_transition!, :jsonify_body
+    before_save :apply_state_transition!
 
     belongs_to :sub_category
     has_many :metrics
@@ -61,10 +61,6 @@ module LynksServiceDesk
       else
         return self.aasm(:state).current_state.to_s
       end
-    end
-
-    def jsonify_body
-      self[:body] = self.body.to_json if self.body.is_a? Hash
     end
 
     def body
