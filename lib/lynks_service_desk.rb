@@ -1,3 +1,5 @@
+require "lynks_service_desk/engine"
+require "lynks_service_desk/configuration"
 require "lynks_service_desk/refinements"
 Dir["lib/lynks_service_desk/**/*.rb"].each{|f| require f.gsub("lib/", "")}
 
