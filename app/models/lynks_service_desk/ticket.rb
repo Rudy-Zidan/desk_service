@@ -25,6 +25,7 @@ module LynksServiceDesk
 
     belongs_to :sub_category
     has_many :metrics
+    has_many :objects, class_name: "LynksServiceDesk::TicketRelationObject"
     delegate :category, to: :sub_category
 
     # just in case, i added the second condition, so as to not override the default state scope

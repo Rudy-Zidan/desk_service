@@ -12,6 +12,7 @@ module LynksServiceDesk
             sub_category: ticket.sub_category.hash_format,
             category: ticket.sub_category.category.hash_format,
             priority: ticket.sub_category.priority.hash_format,
+            objects: ticket.objects.map{|object| object.hash_format},
             creator_id: ticket.creator_id,
             assignee_id: ticket.assignee_id,
             state: ticket.state,
