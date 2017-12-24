@@ -48,8 +48,14 @@ module LynksServiceDesk
     def create
       category = find_sub_category
 
-    # rescue ActionController::RoutingError => e
-    #   byebug
+    rescue ActionController::RoutingError => e
+      respond_to do |format|
+        format.json { render json: {message: e.message}.to_json, status: 404 } 
+      end
+    rescue => e
+      respond_to do |format|
+        format.json { render json: {message: e.message}.to_json, status: 500 } 
+      end
     end
 
     def find_sub_category
