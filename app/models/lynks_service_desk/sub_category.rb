@@ -19,11 +19,5 @@ module LynksServiceDesk
     belongs_to :priority
     has_many :tickets
 
-    before_validation :set_slug
-
-    def set_slug
-      self[:slug] = name.parameterize
-    end
-
   end
 end
