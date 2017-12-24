@@ -1,3 +1,3 @@
 LynksServiceDesk::Engine.routes.draw do
-  resource :tickets
+  resources :tickets, only: [:index, :create, :show, :update], defaults: {format: 'json'}
 end
