@@ -55,10 +55,12 @@ module LynksServiceDesk
       self
     end
 
+    def hash_format
+      
+    end
+
     def json_format
-      return {
-        
-      }.to_json
+      return hash_format.to_json
     end
 
   end
