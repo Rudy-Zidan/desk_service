@@ -1,4 +1,5 @@
-require "lynks_service_desk/*"
+require "lynks_service_desk/refinements"
+Dir["lib/lynks_service_desk/**/*.rb"].each{|f| require f.gsub("lib/", "")}
 
 module LynksServiceDesk
   class << self
