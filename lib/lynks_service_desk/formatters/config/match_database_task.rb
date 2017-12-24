@@ -5,22 +5,24 @@ module LynksServiceDesk
         using LynksServiceDesk::Refinements
 
         def self.priorities_to_match
-          priorities.map do |name, no_of_hours| 
+          array = priorities.map do |name, no_of_hours| 
             {
               name: name.titleize, 
               slug: name.to_s.dehumanize,
-              hours: hours.to_i
+              hours: no_of_hours.to_i
             }
           end
+          return array
         end
 
         def self.categories_to_match
-          tickets_types.keys.map do |category_name|
+          array = tickets_types.keys.map do |category_name|
             {
               name: category_name.titleize,
               slug: category_name.dehumanize
             }
           end
+          return array
         end
 
         def self.sub_categories_to_match
@@ -30,22 +32,23 @@ module LynksServiceDesk
               array << {
                 name: sub_category_name.titleize,
                 slug: sub_category_name.dehumanize,
-                category_id: LynksServiceDesk::Category.find_by_slug(category_name.dehumanize).id,
-                priority_id: LynksServiceDesk::Priority.find_by_slug(priority_name.dehumanize).id,
+                category_id: LynksServiceDesk::Category.find_by_slug(category_name.dehumanize).try(:id),
+                priority_id: LynksServiceDesk::Priority.find_by_slug(priority_name.dehumanize).try(:id),
                 options: options_for(sub_category_name).to_json
               }
             end
           end
+          return array
         end
 
         def self.options_for(sub_category_name)
           values_hash = {}
 
-          parameters_hash = sub_categories_parameters[sub_category_name] || sub_categories_parameters[sub_category_name.dehumanize] || {}
+          parameters = sub_categories_parameters[sub_category_name] || sub_categories_parameters[sub_category_name.dehumanize] || {}
 
           parameters_hash = {}
           
-          parameters_hash = parameters.each do |key, value|
+          parameters.each do |key, value|
             parameters_hash[key] = value.to_s
           end
 

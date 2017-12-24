@@ -14,11 +14,11 @@ LynksServiceDesk.configure do |config|
   #   "low" => 48
   # }
   # 
-  # config.priorities = {
-  #  "high" => 12,
-  #  "medium" => 24,
-  #  "low" => 48
-  # }
+  config.priorities = {
+   "high" => 12,
+   "medium" => 24,
+   "low" => 48
+  }
 
 
   # config.tickets_types expects categories, sub_categories, and priorities
@@ -33,7 +33,17 @@ LynksServiceDesk.configure do |config|
   #     "Another Sub Category" => "low"
   #   }
   # }
-  config.tickets_types = {}
+  config.tickets_types =   {
+    "Operations" => {
+      "Price Change" => "high",
+      "Another Sub Category" => "low"
+    },
+    "Finance" => {
+      "Refund" => "high",
+      "Another Sub Category" => "low"
+    }
+  }
+
 
 
 
@@ -50,7 +60,16 @@ LynksServiceDesk.configure do |config|
   #     "name" => String
   #   }
   # }
-  config.sub_categories_parameters = {}
+  config.sub_categories_parameters =   {
+    "Price Change" =>
+    {
+      "price_before" => Integer,
+      "price_after" => Float,
+      "due_date" => DateTime,
+      "name" => String
+    }
+  }
+
 
 
   # config.sub_categories_messages expects sub_categories, locales, and the message
@@ -64,8 +83,17 @@ LynksServiceDesk.configure do |config|
   #        Por favor pague antes %due_date",
   #   }
   # }
-  # 
-  config.sub_categories_messages = {}
+  
+  config.sub_categories_messages =   {
+    "Price Change" =>
+    {
+      en: 'Hello %name. Price has changed. Was %price_before, now is %price_after.
+        Please pay before %due_date',
+      es: 'Hola %name. El precio ha cambiado. Fue %price_before, ahora es %price_after.
+         Por favor pague antes %due_date',
+    }
+  }
+  
 
 
   # config.record_state_transitions_as_metrics expects a boolean

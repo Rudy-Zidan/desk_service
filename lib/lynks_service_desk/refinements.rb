@@ -3,7 +3,7 @@ module LynksServiceDesk
 
     refine String do
       def dehumanize
-        parameterize.gsub("-", "_")
+        parameterize.underscore
       end
 
       def syminize
