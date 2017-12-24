@@ -25,5 +25,8 @@ module LynksServiceDesk
       self[:slug] = name.parameterize.underscore
     end
 
+    def options
+    	return JSON.parse(self[:options])
+    end
   end
 end
