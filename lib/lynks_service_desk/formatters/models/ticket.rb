@@ -21,10 +21,6 @@ module LynksServiceDesk
           }
         end
 
-        def self.json_format(ticket)
-          hash_format(ticket).to_json
-        end
-
       end
     end
   end

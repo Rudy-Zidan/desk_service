@@ -2,10 +2,9 @@ module LynksServiceDesk
   module Formatters
     module Model
 
-      [:hash_format, :json_format].each do |method_name|
-        define_singleton_method method_name do |object|
-          get_object_formatter(object).send(method_name, object)
-        end
+      
+      def self.hash_format(object)
+        get_object_formatter(object).hash_format(object)
       end
 
       def self.get_object_formatter(object)

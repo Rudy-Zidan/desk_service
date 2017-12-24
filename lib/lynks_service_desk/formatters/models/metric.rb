@@ -9,10 +9,6 @@ module LynksServiceDesk
 
         end
 
-        def self.json_format(metric)
-
-        end
-
       end
     end
   end

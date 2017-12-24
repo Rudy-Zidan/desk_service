@@ -6,11 +6,15 @@ module LynksServiceDesk
         using LynksServiceDesk::Refinements
 
         def self.hash_format(sub_category)
-
-        end
-
-        def self.json_format(sub_category)
-
+          {
+            name: sub_category.name,
+            slug: sub_category.slug,
+            created_at: sub_category.created_at,
+            updated_at: sub_category.updated_at,
+            options: sub_category.options,
+            category_name: sub_category.category.name,
+            priority: sub_category.priority.hash_format
+          }
         end
 
       end

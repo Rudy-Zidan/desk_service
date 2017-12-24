@@ -9,10 +9,6 @@ module LynksServiceDesk
 
         end
 
-        def self.json_format(ticket_relation_object)
-
-        end
-
       end
     end
   end

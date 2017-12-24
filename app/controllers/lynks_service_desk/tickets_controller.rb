@@ -12,6 +12,12 @@ module LynksServiceDesk
 
     end
 
+    def new
+      respond_to do |format|
+        format.json { render json: LynksServiceDesk::Category.all.json_format }
+      end
+    end
+
     def show
       
     end
