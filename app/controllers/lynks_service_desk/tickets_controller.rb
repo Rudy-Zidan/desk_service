@@ -6,10 +6,8 @@ module LynksServiceDesk
     def index
 
       respond_to do |format|
-
         format.json { render json: {}}
       end
-
     end
 
     def new
@@ -18,7 +16,7 @@ module LynksServiceDesk
       end
 
       respond_to do |format|
-        format.json { render json: @a_t_c }
+        format.json { render json: @a_t_c.to_json }
       end
     end
 
