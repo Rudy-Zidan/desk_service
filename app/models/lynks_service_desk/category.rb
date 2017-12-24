@@ -12,6 +12,11 @@
 
 module LynksServiceDesk
   class Category < ApplicationRecord
+    before_validation :set_slug
+ 
+    def set_slug
+      self[:slug] = name.parameterize.underscore
+    end
 
   end
 end
