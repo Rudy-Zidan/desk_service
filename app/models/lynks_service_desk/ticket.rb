@@ -18,14 +18,7 @@ module LynksServiceDesk
 
   class Ticket < ApplicationRecord
   	include AASM
-
-    FORMATTER_CLASS = LynksServiceDesk::Formatters::Models::Ticket
-    [:hash_format, :json_format].each do |format_type|
-      define_method format_type do
-        FORMATTER_CLASS.send(format_type, self)
-      end
-    end
-
+    
     attr_accessor :state_transition, :user_id
     before_save :apply_state_transition!
 
