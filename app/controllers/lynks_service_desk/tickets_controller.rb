@@ -1,5 +1,5 @@
 module LynksServiceDesk
-  class TicketsController < ActionController::Base
+  class TicketsController < ApplicationController
 
   end
 end
