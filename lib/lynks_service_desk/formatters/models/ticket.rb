@@ -15,7 +15,7 @@ module LynksServiceDesk
             creator_id: ticket.creator_id,
             assignee_id: ticket.assignee_id,
             state: ticket.state,
-            body: JSON.parse(ticket.body),
+            body: ticket.body,
             created_at: ticket.created_at,
             updated_at: ticket.updated_at,
           }

@@ -70,8 +70,6 @@ module LynksServiceDesk
     def body
       if self[:body].blank?
         self[:body] = default_body
-      else
-        JSON.parse(self[:body])
       end
     end
 
