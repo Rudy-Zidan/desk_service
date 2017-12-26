@@ -42,7 +42,7 @@ module LynksServiceDesk
     end
 
     def update
-
+      permitted_params = params.permit(:page, :limit, :scope)
     end
 
     def create
