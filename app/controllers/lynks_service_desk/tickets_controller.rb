@@ -22,7 +22,7 @@ module LynksServiceDesk
 
       respond_to do |format|
         format.json { render json:
-          @tickets.map{|t| t.hash_format}.to_json
+          @tickets.map(&:hash_format).to_json
         }
       end
     end
