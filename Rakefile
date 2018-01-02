@@ -19,6 +19,9 @@ load 'rails/tasks/engine.rake'
 
 load 'rails/tasks/statistics.rake'
 
+load 'lib/tasks/match_database_with_configuration.rake'
+
+
 require 'bundler/gem_tasks'
 
 require 'rake/testtask'
