@@ -21,8 +21,11 @@ module LynksServiceDesk
       sub_category.options["parameters"].each do |param_name, param_type|
         begin
           param_value = options.fetch(param_name)
-          raise NameError if !["Date", "DateTime", "Integer", "Float"].include?(param_type)
+          raise NameError if !["String", "Date", "DateTime", "Integer", "Float"].include?(param_type)
+
           case param_type
+          when "String"
+            param_value = param_value.to_s
           when "Date"
             param_value = Date.parse(param_value)
           when "DateTime"

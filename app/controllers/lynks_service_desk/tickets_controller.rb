@@ -56,7 +56,7 @@ module LynksServiceDesk
     def create
       sub_category = find_sub_category(params)
       sub_category_params = format_sub_category_options(params, sub_category)
-
+      byebug
     rescue ActionController::ParameterMissing,
       LynksServiceDesk::Exceptions::InvalidTicketParams,
       LynksServiceDesk::Exceptions::InvalidDataType => e
