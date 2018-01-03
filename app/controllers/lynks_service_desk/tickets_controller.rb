@@ -60,7 +60,7 @@ module LynksServiceDesk
       ticket.creator_id = params[:creator_id] if params[:creator_id].present? 
       ticket.assignee_id = params[:assignee_id] if params[:assignee_id].present?
       ticket.generate!(sub_category, sub_category_params)
-
+      # add_object
       respond_to do |format|
         format.json { render json: ticket.hash_format.to_json, status: 200 }
       end
