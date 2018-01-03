@@ -22,7 +22,7 @@ module LynksServiceDesk
         begin
           param_value = options.fetch(param_name)
           param_type_class = param_type.constantize
-          case param_type_class.constantize
+          case param_type_class
           when Date
             param_value = Date.parse(param_value)
           when DateTime
@@ -41,7 +41,7 @@ module LynksServiceDesk
         rescue NameError => e
           byebug
           raise LynksServiceDesk::Exceptions::InvalidTicketParams,
-                "'#{param_type}' is not supported. Only Date, DateTime, Integer, Float, and String are."
+                "'#{param_type}' is not supported. Only Date, DateTime, Integer, Float, and String are. Please check your config file."
       	end
       end
       return results_hash
