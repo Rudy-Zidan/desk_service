@@ -9,7 +9,7 @@ module LynksServiceDesk
           {
             name: priority.name,
             slug: priority.slug,
-            hours: priority.hours
+            hours: priority[:hours]
           }
         end
 
