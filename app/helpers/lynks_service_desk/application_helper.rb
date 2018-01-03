@@ -21,25 +21,23 @@ module LynksServiceDesk
       sub_category.options["parameters"].each do |param_name, param_type|
         begin
           param_value = options.fetch(param_name)
-          param_type_class = param_type.constantize
-          case param_type_class
-          when Date
+          raise NameError if !["Date", "DateTime", "Integer", "Float"].include?(param_type)
+          case param_type
+          when "Date"
             param_value = Date.parse(param_value)
-          when DateTime
+          when "DateTime"
             param_value = DateTime.parse(param_value)
-          when Integer
+          when "Integer"
             param_value = param_value.to_i
-          when Float
+          when "Float"
             param_value = param_value.to_f
           end
 
           results_hash[param_name] = param_value
         rescue ArgumentError => e
-          byebug
           raise LynksServiceDesk::Exceptions::InvalidDataType,
                 "#{param_value} is not a valid #{param_type}"
         rescue NameError => e
-          byebug
           raise LynksServiceDesk::Exceptions::InvalidTicketParams,
                 "'#{param_type}' is not supported. Only Date, DateTime, Integer, Float, and String are. Please check your config file."
       	end
