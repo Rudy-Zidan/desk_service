@@ -19,29 +19,33 @@ module LynksServiceDesk
       options = params.require(:sub_category).require(:options)
       results_hash = {}
       sub_category.options["parameters"].each do |param_name, param_type|
-        param_value = options.fetch(param_name)
-        param_type_class = param_type.constantize
-        case param_type_class.constantize
-        when Date
-          param_value = Date.parse(param_value)
-        when DateTime
-          param_value = DateTime.parse(param_value)
-        when Integer
-          param_value = param_value.to_i
-        when Float
-          param_value = param_value.to_f
-        end
+        begin
+          param_value = options.fetch(param_name)
+          param_type_class = param_type.constantize
+          case param_type_class.constantize
+          when Date
+            param_value = Date.parse(param_value)
+          when DateTime
+            param_value = DateTime.parse(param_value)
+          when Integer
+            param_value = param_value.to_i
+          when Float
+            param_value = param_value.to_f
+          end
 
-        results_hash[param_name] = param_value
+          results_hash[param_name] = param_value
+        rescue ArgumentError => e
+          byebug
+          raise LynksServiceDesk::Exceptions::InvalidDataType,
+                "#{param_value} is not a valid #{param_type}"
+        rescue NameError => e
+          byebug
+          raise LynksServiceDesk::Exceptions::InvalidTicketParams,
+                "'#{param_type}' is not supported. Only Date, DateTime, Integer, Float, and String are."
+      	end
       end
       return results_hash
-    rescue ArgumentError => e
-      raise LynksServiceDesk::Exceptions::InvalidDataType,
-            "#{param_value} is not a valid #{param_type}"
-    rescue NameError => e
-      raise LynksServiceDesk::Exceptions::InvalidTicketParams,
-            "'#{param_type}' is not supported. Only Date, DateTime, Integer, Float, and String are."
-  	end
+    end
 
   end
 end
