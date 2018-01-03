@@ -57,11 +57,15 @@ module LynksServiceDesk
       sub_category = find_sub_category
       sub_category_params = format_sub_category_options(sub_category)
       ticket = LynksServiceDesk::Ticket.new
+      # add reference objects
+      reference_params = params.require(:references).permit(*CONFIG.allowed_relation_objects_parameters)
+      reference_params.each{|attr_name, attr_value| ticket.send("#{attr_name}=", attr_value)}
       ticket.creator_id = params[:creator_id] if params[:creator_id].present? 
       ticket.assignee_id = params[:assignee_id] if params[:assignee_id].present?
+      byebug
       ticket.generate!(sub_category, sub_category_params)
       ticket.reload
-      # add objects
+      byebug
       respond_to do |format|
         format.json { render json: ticket.hash_format.to_json, status: 200 }
       end

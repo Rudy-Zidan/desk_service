@@ -46,6 +46,18 @@ module LynksServiceDesk
         ticketable_classes.map{|class_name| [class_name.underscore + "_id", class_name.underscore + "_ids"]}.flatten
       end
 
+      def self.allowed_relation_objects_parameters
+        array = []
+        self.allowed_relation_objects_attributes.each do |name|
+          if name.to_s.last == "s"
+            array << {"#{name}" => []}
+          elsif name.to_s.last == "d"
+            array << name
+          end 
+        end
+        array
+      end
+
       #instead of typing LynksServiceDesk.configuration every time
       def self.method_missing(meth, *args, &block)
         if LynksServiceDesk.configuration.respond_to? meth

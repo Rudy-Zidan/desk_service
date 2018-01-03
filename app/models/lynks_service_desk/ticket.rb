@@ -69,6 +69,7 @@ module LynksServiceDesk
           self.body[:messages][locale] = subbed_message.gsub!("%"+to_sub.to_s, value.to_s)
         end
       end
+      self.body[:objects] = {}
       self.save!
       self
     end
@@ -89,7 +90,7 @@ module LynksServiceDesk
     end
 
     def save_relation_objects!
-
+      byebug
     end
 
   end
