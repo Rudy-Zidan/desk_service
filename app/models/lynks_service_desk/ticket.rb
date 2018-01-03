@@ -83,10 +83,6 @@ module LynksServiceDesk
       self[:body]
     end
 
-    def default_body
-      body_hash = {}
-    end
-
     def save_relation_objects!
 
     end
