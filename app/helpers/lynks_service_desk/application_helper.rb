@@ -9,7 +9,8 @@ module LynksServiceDesk
       sub_category_slug ||= sub_category_params[:slug]
       sub_category = LynksServiceDesk::SubCategory.find_by_slug(sub_category_slug)
       if sub_category.blank?
-        raise ActionController::RoutingError.new("Could not find sub category with slug #{sub_category_slug}")
+        raise LynksServiceDesk::Exceptions::InvalidSubCategory,
+              "Could not find sub category with slug #{sub_category_slug}")
       end
       sub_category
   	end
@@ -35,9 +36,11 @@ module LynksServiceDesk
       end
       return results_hash
     rescue ArgumentError => e
-      raise "#{param_value} is not a valid #{param_type}"
+      raise LynksServiceDesk::Exceptions::InvalidDataType,
+            "#{param_value} is not a valid #{param_type}"
     rescue NameError => e
-      raise "'#{param_type}' is not supported. Only Date, DateTime, Integer, Float, and String are."
+      raise LynksServiceDesk::Exceptions::InvalidTicketParams,
+            "'#{param_type}' is not supported. Only Date, DateTime, Integer, Float, and String are."
   	end
 
   end

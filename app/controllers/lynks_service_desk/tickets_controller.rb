@@ -56,15 +56,20 @@ module LynksServiceDesk
     def create
       sub_category = find_sub_category(params)
       sub_category_params = format_sub_category_options(params, sub_category)
-      
-    rescue ActionController::ParameterMissing => e
+
+    rescue ActionController::ParameterMissing,
+      LynksServiceDesk::Exceptions::InvalidTicketParams,
+      LynksServiceDesk::Exceptions::InvalidDataType => e
+
       respond_to do |format|
         format.json { render json: {message: e.message}.to_json, status: 403 }
       end
-    rescue ActionController::RoutingError => e
+
+    rescue LynksServiceDesk::Exceptions::InvalidSubCategory => e
       respond_to do |format|
         format.json { render json: {message: e.message}.to_json, status: 404 } 
       end
+
     rescue => e
       respond_to do |format|
         format.json { render json: {message: e.message}.to_json, status: 500 } 
