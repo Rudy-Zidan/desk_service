@@ -18,7 +18,7 @@ module LynksServiceDesk
             created_at: ticket.created_at,
             updated_at: ticket.updated_at,
             sub_category: ticket.sub_category.hash_format,
-            category: ticket.sub_category.category.hash_format,
+            # category: ticket.sub_category.category.hash_format,
           }
         end
 
