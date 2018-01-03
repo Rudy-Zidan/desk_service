@@ -71,8 +71,6 @@ module LynksServiceDesk
       end
       self.save!
       self
-    rescue => e
-      byebug
     end
 
     def state
