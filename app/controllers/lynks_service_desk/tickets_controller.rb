@@ -58,8 +58,6 @@ module LynksServiceDesk
       sub_category_params = format_sub_category_options(sub_category)
       ticket = LynksServiceDesk::Ticket.new
       ticket.generate!(sub_category, sub_category_params)
-
-      byebug
     respond_to do |format|
       format.json { render json: ticket.hash_format.to_json, status: 200 }
     end
