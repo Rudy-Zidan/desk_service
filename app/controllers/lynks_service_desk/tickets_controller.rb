@@ -51,8 +51,8 @@ module LynksServiceDesk
     end
 
     def create
-      category = find_sub_category
-
+      sub_category = find_sub_category
+      priority = find_priority
     rescue ActionController::RoutingError => e
       respond_to do |format|
         format.json { render json: {message: e.message}.to_json, status: 404 } 
@@ -65,8 +65,8 @@ module LynksServiceDesk
 
     def find_sub_category
       sub_category_params = params.require(:sub_category).permit(:name, :slug)
-      sub_category_slug = sub_category_params[:name].parameterize.underscore 
-      sub_category_slug ||= sub_category_params[:name]
+      sub_category_slug = sub_category_params[:name].try(:parameterize).try(:underscore)
+      sub_category_slug ||= sub_category_params[:slug]
       sub_category = LynksServiceDesk::SubCategory.find_by_slug(sub_category_slug)
       if sub_category.blank?
         raise ActionController::RoutingError.new("Could not find sub category with slug #{sub_category_slug}")

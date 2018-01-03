@@ -57,7 +57,7 @@ module LynksServiceDesk
     end
 
     def state
-      if CONFIG.unopened_using_metrics? && ( !self.persisted? || !self.metrics.exists?)
+      if CONFIG.unopened_using_metrics? && ( self.persisted? || !self.metrics.exists?)
         return "unopened"
       else
         return self.aasm(:state).current_state.to_s
