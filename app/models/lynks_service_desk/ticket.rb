@@ -18,7 +18,6 @@ module LynksServiceDesk
 
   class Ticket < ApplicationRecord
   	include AASM
-
     attr_accessor :state_transition, :user_id, *CONFIG.allowed_relation_objects_attributes
     before_save :apply_state_transition!
     after_save :save_relation_objects!
