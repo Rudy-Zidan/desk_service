@@ -56,6 +56,10 @@ module LynksServiceDesk
       self
     end
 
+    def generate!(sub_category, sub_category_params)
+      byebug
+    end
+
     def state
       if self.persisted? && CONFIG.unopened_using_metrics? && self.metrics.blank?
         return "unopened"
