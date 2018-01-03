@@ -38,13 +38,16 @@ module LynksServiceDesk
     end
 
     def show
-      respond_to do |format|
+      permitted_params = params.permit(:id)
+      ticket = LynksServiceDesk::Ticket.find(params[:id])
 
+      respond_to do |format|
+        format.json { render json: ticket.hash_format.to_json }
       end
     end
 
     def update
-      permitted_params = params.permit(:page, :limit, :scope)
+      # rethink
     end
 
     def create

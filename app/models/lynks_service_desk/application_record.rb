@@ -1,6 +1,7 @@
 module LynksServiceDesk
   class ApplicationRecord < ActiveRecord::Base
   	require "kaminari"
+
     self.abstract_class = true
 
     CONFIG = LynksServiceDesk::Formatters::Config
