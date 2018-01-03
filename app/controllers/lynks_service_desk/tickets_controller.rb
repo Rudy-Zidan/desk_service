@@ -61,7 +61,7 @@ module LynksServiceDesk
       ticket.assignee_id = params[:assignee_id] if params[:assignee_id].present?
       ticket.generate!(sub_category, sub_category_params)
       ticket.reload
-      # add_object
+      # add objects
       respond_to do |format|
         format.json { render json: ticket.hash_format.to_json, status: 200 }
       end
