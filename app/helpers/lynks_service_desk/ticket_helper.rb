@@ -1,9 +1,9 @@
 module LynksServiceDesk
   module TicketHelper
 
-  	CONFIG = LynksServiceDesk::Formatters::Config
+    CONFIG = LynksServiceDesk::Formatters::Config
 
-  	def find_sub_category(params)
+    def find_sub_category
       sub_category_params = params.require(:sub_category).permit(:name, :slug)
       sub_category_slug = sub_category_params[:name].try(:parameterize).try(:underscore)
       sub_category_slug ||= sub_category_params[:slug]
@@ -13,9 +13,9 @@ module LynksServiceDesk
               "Could not find sub category with slug #{sub_category_slug}"
       end
       sub_category
-  	end
+    end
 
-  	def format_sub_category_options(params, sub_category)
+    def format_sub_category_options(sub_category)
       options = params.require(:sub_category).require(:options)
       results_hash = {}
       sub_category.options["parameters"].each do |param_name, param_type|

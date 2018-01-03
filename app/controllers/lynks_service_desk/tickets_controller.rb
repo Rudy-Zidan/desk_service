@@ -54,9 +54,12 @@ module LynksServiceDesk
     end
 
     def create
-      sub_category = find_sub_category(params)
-      sub_category_params = format_sub_category_options(params, sub_category)
+      sub_category = find_sub_category
+      sub_category_params = format_sub_category_options(sub_category)
+      ticket = LynksServiceDesk::Ticket.new
+      ticket.generate_ticket_body_options!(sub_category, sub_category_params)
       byebug
+
     rescue ActionController::ParameterMissing,
       LynksServiceDesk::Exceptions::InvalidTicketParams,
       LynksServiceDesk::Exceptions::InvalidDataType => e
@@ -74,6 +77,7 @@ module LynksServiceDesk
       respond_to do |format|
         format.json { render json: {message: e.message}.to_json, status: 500 } 
       end
+
     end
 
     def set_ticket
