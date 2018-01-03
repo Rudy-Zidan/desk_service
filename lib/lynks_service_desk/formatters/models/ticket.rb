@@ -13,7 +13,7 @@ module LynksServiceDesk
             assignee_id: ticket.assignee_id,
             state: ticket.state,
             body: ticket.body,
-            objects: ticket.objects.map{|object| object.hash_format},
+            reference_objects: ticket.objects.map(&:hash_format),
             priority: ticket.sub_category.priority.hash_format,
             sub_category: ticket.sub_category.hash_format,
             created_at: ticket.created_at,
