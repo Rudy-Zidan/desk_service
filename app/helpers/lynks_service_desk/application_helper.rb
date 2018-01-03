@@ -10,7 +10,7 @@ module LynksServiceDesk
       sub_category = LynksServiceDesk::SubCategory.find_by_slug(sub_category_slug)
       if sub_category.blank?
         raise LynksServiceDesk::Exceptions::InvalidSubCategory,
-              "Could not find sub category with slug #{sub_category_slug}")
+              "Could not find sub category with slug #{sub_category_slug}"
       end
       sub_category
   	end
