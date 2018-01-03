@@ -57,10 +57,14 @@ module LynksServiceDesk
       sub_category = find_sub_category
       sub_category_params = format_sub_category_options(sub_category)
       ticket = LynksServiceDesk::Ticket.new
+      ticket.creator_id = params[:creator_id] if params[:creator_id].present? 
+      ticket.assignee_id = params[:assignee_id] if params[:assignee_id].present?
       ticket.generate!(sub_category, sub_category_params)
-    respond_to do |format|
-      format.json { render json: ticket.hash_format.to_json, status: 200 }
-    end
+
+      respond_to do |format|
+        format.json { render json: ticket.hash_format.to_json, status: 200 }
+      end
+
     rescue ActionController::ParameterMissing,
       LynksServiceDesk::Exceptions::InvalidTicketParams,
       LynksServiceDesk::Exceptions::InvalidDataType => e
