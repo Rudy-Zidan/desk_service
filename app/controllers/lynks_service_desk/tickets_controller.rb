@@ -1,7 +1,7 @@
 module LynksServiceDesk
   class TicketsController < ApplicationController
 
-    include LynksServiceDesk::ApplicationHelper
+    include LynksServiceDesk::TicketHelper
 
     skip_before_action :verify_authenticity_token
     before_action :set_ticket, only: [:show, :update]
