@@ -52,7 +52,7 @@ module LynksServiceDesk
 
     def create
       sub_category = find_sub_category
-      priority = find_priority
+      
     rescue ActionController::RoutingError => e
       respond_to do |format|
         format.json { render json: {message: e.message}.to_json, status: 404 } 

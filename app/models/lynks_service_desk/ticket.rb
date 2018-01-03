@@ -57,10 +57,10 @@ module LynksServiceDesk
     end
 
     def state
-      if CONFIG.unopened_using_metrics? && ( self.persisted? || !self.metrics.exists?)
+      if self.persisted? && CONFIG.unopened_using_metrics? && self.metrics.blank?
         return "unopened"
       else
-        return self.aasm(:state).current_state.to_s
+        return self[:state] ||= CONFIG.initial_state_symbol.to_s
       end
     end
 
@@ -74,6 +74,9 @@ module LynksServiceDesk
       body_hash = {}
     end
 
+    def save_relation_objects!
+
+    end
 
   end
 end
