@@ -90,7 +90,15 @@ module LynksServiceDesk
     end
 
     def save_relation_objects!
-      byebug
+      CONFIG.allowed_relation_objects_attributes.each do |attr_name|
+        next if self.send(attr_name).blank?
+        [self.send(attr_name)].flatten.each do |id|
+          self.objects.create!(
+            relation_object_id: id,
+            relation_object_type: attr_name.split("_id")[0].camelize
+          )
+        end
+      end
     end
 
   end

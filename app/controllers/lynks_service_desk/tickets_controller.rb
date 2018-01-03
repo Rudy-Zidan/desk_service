@@ -62,10 +62,8 @@ module LynksServiceDesk
       reference_params.each{|attr_name, attr_value| ticket.send("#{attr_name}=", attr_value)}
       ticket.creator_id = params[:creator_id] if params[:creator_id].present? 
       ticket.assignee_id = params[:assignee_id] if params[:assignee_id].present?
-      byebug
       ticket.generate!(sub_category, sub_category_params)
       ticket.reload
-      byebug
       respond_to do |format|
         format.json { render json: ticket.hash_format.to_json, status: 200 }
       end
