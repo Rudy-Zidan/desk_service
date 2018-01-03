@@ -57,6 +57,14 @@ module LynksServiceDesk
     end
 
     def generate!(sub_category, sub_category_params)
+      self.sub_category = sub_category
+      self.body[:values] = {}
+      sub_category_params.each do |key, value|
+        self.body[:values][key] = value
+      end
+      self.body[:messages] = sub_category.options["messages"]
+      byebug
+    rescue => e
       byebug
     end
 
@@ -69,9 +77,10 @@ module LynksServiceDesk
     end
 
     def body
-      if self[:body].blank?
-        self[:body] = default_body
+      if self[:body].nil?
+        self[:body] = {}
       end
+      self[:body]
     end
 
     def default_body
