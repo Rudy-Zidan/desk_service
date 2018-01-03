@@ -63,7 +63,14 @@ module LynksServiceDesk
         self.body[:values][key] = value
       end
       self.body[:messages] = sub_category.options["messages"]
-      byebug
+      self.body[:messages].each do |locale, message|
+        subbed_message = message
+        self.body[:values].each do |to_sub, value|
+          self.body[:messages][locale] = subbed_message.gsub!("%"+to_sub.to_s, value.to_s)
+        end
+      end
+      self.save!
+      self
     rescue => e
       byebug
     end
