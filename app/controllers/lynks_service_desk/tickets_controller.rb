@@ -56,7 +56,7 @@ module LynksServiceDesk
     def create
       sub_category = find_sub_category(params)
       sub_category_params = format_sub_category_options(params, sub_category)
-
+      
     rescue ActionController::ParameterMissing => e
       respond_to do |format|
         format.json { render json: {message: e.message}.to_json, status: 403 }
