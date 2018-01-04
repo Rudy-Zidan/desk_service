@@ -4,7 +4,7 @@ module LynksServiceDesk
     include LynksServiceDesk::TicketHelper
 
     skip_before_action :verify_authenticity_token
-    before_action :set_ticket, only: [:show, :update]
+    before_action :set_ticket, only: [:show, :update, :transition_state, :metrics, :objects]
 
     CONFIG = LynksServiceDesk::Formatters::Config
 
@@ -31,6 +31,7 @@ module LynksServiceDesk
     end
 
     def new
+
       @a_t_c = Rails.cache.fetch("all_ticket_categories", expires_in: 48.hours) do
         LynksServiceDesk::Category.all.map(&:hash_format)
       end
@@ -85,6 +86,19 @@ module LynksServiceDesk
       respond_to do |format|
         format.json { render json: {message: e.message}.to_json, status: 500 } 
       end
+
+    end
+
+    def transition_state
+      state_transition = params.fetch(:state_transition)
+      @ticket.send(state_transition + "!")
+    end
+
+    def metrics
+
+    end
+
+    def objects
 
     end
 
