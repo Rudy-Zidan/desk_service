@@ -82,6 +82,10 @@ module LynksServiceDesk
       end
     end
 
+    def available_state_transitions
+      self.aasm(:state).events(:permitted => true).map(&:name)
+    end
+
     def body
       if self[:body].nil?
         self[:body] = {}

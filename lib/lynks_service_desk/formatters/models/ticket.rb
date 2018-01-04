@@ -12,7 +12,7 @@ module LynksServiceDesk
             creator_id: ticket.creator_id,
             assignee_id: ticket.assignee_id,
             state: ticket.public_state,
-            available_state_transitions: ticket.aasm(:state).events(:permitted => true).map(&:name),
+            available_state_transitions: ticket.available_state_transitions,
             body: ticket.body,
             reference_objects: ticket.objects.map(&:hash_format),
             metrics: ticket.metrics.map(&:hash_format),
