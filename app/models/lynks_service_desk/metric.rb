@@ -34,7 +34,12 @@ module LynksServiceDesk
 
     def metric_allowed?
       allowed = self.ticket.aasm(:state).events.map(&:name) + CONFIG.allowed_metrics
-      allowed.include?(self.action.to_s.to_sym)
+      if allowed.include?(self.action.to_s.to_sym)
+        return true
+      else
+        raise LynksServiceDesk::Exceptions::InvalidMetric, 
+        "Allowed actions: #{CONFIG.allowed_metrics.to_sentence} "
+      end
     end
 
   end

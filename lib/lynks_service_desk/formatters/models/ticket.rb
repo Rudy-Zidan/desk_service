@@ -13,6 +13,7 @@ module LynksServiceDesk
             assignee_id: ticket.assignee_id,
             state: ticket.public_state,
             available_state_transitions: ticket.available_state_transitions,
+            available_metric_actions: LynksServiceDesk::Formatters::Config.allowed_metrics,
             body: ticket.body,
             reference_objects: ticket.objects.map(&:hash_format),
             metrics: ticket.metrics.map(&:hash_format),

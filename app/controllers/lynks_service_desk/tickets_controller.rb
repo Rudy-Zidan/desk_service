@@ -110,7 +110,23 @@ module LynksServiceDesk
     end
 
     def metrics
+      action = params.fetch(:metric_action)
+      @ticket.metrics.create!(
+        action: action,
+        user_id: params[:user_id]
+      )
 
+      respond_to do |format|
+        format.json { render json: @ticket.hash_format.to_json, status: 200 }
+      end
+    rescue ActionController::ParameterMissing,
+           LynksServiceDesk::Exceptions::InvalidMetric => e
+      respond_to do |format|
+        format.json { render json: {
+          message: e.message},
+          status: 403
+        }
+      end
     end
 
     def objects

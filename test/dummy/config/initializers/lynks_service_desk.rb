@@ -105,7 +105,7 @@ LynksServiceDesk.configure do |config|
   # config.allowed_metric_types expects an array of strings
   # example:
   # ["First view", "First customer contact"]
-  config.allowed_metric_types = []
+  config.allowed_metric_types = ["First view", "First customer contact"]
 
 
   # config.initial_state expects a string
