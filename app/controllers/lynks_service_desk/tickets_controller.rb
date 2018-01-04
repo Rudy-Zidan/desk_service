@@ -102,7 +102,7 @@ module LynksServiceDesk
            NoMethodError => e
       respond_to do |format|
         format.json { render json: {
-          message: "Allowed state transitions: #{@ticket.allowed_state_transitions.to_sentence}"},
+          message: "Allowed state transitions: #{@ticket.available_state_transitions.to_sentence}"},
           status: 403
         }
       end
