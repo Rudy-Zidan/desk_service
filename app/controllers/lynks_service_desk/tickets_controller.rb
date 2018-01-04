@@ -91,7 +91,25 @@ module LynksServiceDesk
 
     def transition_state
       state_transition = params.fetch(:state_transition)
-      @ticket.send(state_transition + "!")
+      @ticket.state_transition = state_transition
+      @ticket.user_id = params[:user_id]
+      @ticket.save!
+      @ticket.reload
+      respond_to do |format|
+        format.json { render json: @ticket.hash_format.to_json, status: 200 }
+      end
+    rescue ActionController::ParameterMissing,
+           NoMethodError => e
+      respond_to do |format|
+        format.json { render json: {
+          message: "Allowed state transitions: #{@ticket.allowed_state_transitions.to_sentence}"},
+          status: 403
+        }
+      end
+    rescue ActionController::ParameterMissing => e
+      respond_to do |format|
+        format.json { render json: {message: e.message}, status: 403 }
+      end
     end
 
     def metrics
@@ -104,6 +122,11 @@ module LynksServiceDesk
 
     def set_ticket
       @ticket = LynksServiceDesk::Ticket.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      respond_to do |format|
+        format.json { render json: {message: e.message}.to_json, status: 404 }
+      end
     end
+
   end
 end

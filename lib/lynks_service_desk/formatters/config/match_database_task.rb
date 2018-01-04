@@ -49,7 +49,7 @@ module LynksServiceDesk
           parameters_hash = {}
           
           parameters.each do |key, value|
-            parameters_hash[key] = value.to_s
+            parameters_hash[key.dehumanize] = value.to_s
           end
 
           messages_hash = sub_categories_messages[sub_category_name] || sub_categories_messages[sub_category_name.dehumanize] || {} 
