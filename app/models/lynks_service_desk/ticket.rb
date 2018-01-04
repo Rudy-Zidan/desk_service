@@ -74,11 +74,11 @@ module LynksServiceDesk
       self
     end
 
-    def state
+    def public_state
       if self.persisted? && CONFIG.unopened_using_metrics? && self.metrics.blank?
         return "unopened"
       else
-        return self[:state] ||= CONFIG.initial_state_symbol.to_s
+        return self[:state]
       end
     end
 
