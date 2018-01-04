@@ -46,13 +46,15 @@ module LynksServiceDesk
     end
 
     def apply_state_transition!
-      if state_transition.present?
-        self.send(state_transition.to_s + "!")
+      state_transition_to_apply = state_transition
+      self.state_transition = nil
+      if state_transition_to_apply.present?
+        self.send(state_transition_to_apply.to_s + "!")
         if CONFIG.save_state_transitions_metrics?
-          self.metrics.create(user_id: self.user_id, action: self.state_transition)
+          self.metrics.create(user_id: self.user_id, action: state_transition_to_apply)
+          self.user_id = nil
         end
       end
-
       self
     end
 

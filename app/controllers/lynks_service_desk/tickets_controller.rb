@@ -1,6 +1,6 @@
 module LynksServiceDesk
   class TicketsController < ApplicationController
-
+    require 'aasm'
     include LynksServiceDesk::TicketHelper
 
     skip_before_action :verify_authenticity_token
@@ -99,16 +99,13 @@ module LynksServiceDesk
         format.json { render json: @ticket.hash_format.to_json, status: 200 }
       end
     rescue ActionController::ParameterMissing,
-           NoMethodError => e
+           NoMethodError,
+           AASM::InvalidTransition => e
       respond_to do |format|
         format.json { render json: {
           message: "Allowed state transitions: #{@ticket.available_state_transitions.to_sentence}"},
           status: 403
         }
-      end
-    rescue ActionController::ParameterMissing => e
-      respond_to do |format|
-        format.json { render json: {message: e.message}, status: 403 }
       end
     end
 
