@@ -6,7 +6,7 @@ module LynksServiceDesk
         using LynksServiceDesk::Refinements
 
         def self.hash_format(metric)
-
+        	metric.attributes
         end
 
       end

@@ -14,6 +14,7 @@ module LynksServiceDesk
             state: ticket.state,
             body: ticket.body,
             reference_objects: ticket.objects.map(&:hash_format),
+            metrics: ticket.metrics.map(&:hash_format),
             priority: ticket.sub_category.priority.hash_format,
             sub_category: ticket.sub_category.hash_format,
             created_at: ticket.created_at,
