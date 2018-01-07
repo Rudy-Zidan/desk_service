@@ -143,6 +143,10 @@ module LynksServiceDesk
       end
     rescue ActionController::ParameterMissing,
            LynksServiceDsk::Exceptions::InvalidObject => e
+        format.json { render json: {
+          message: e.message},
+          status: 403
+        }
     end
 
     def set_ticket
