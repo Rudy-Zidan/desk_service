@@ -1,7 +1,5 @@
 # LynksServiceDesk
 
-## Database
-![Who removed the erd image file ? :( ](erd.png)
 
 ## Usage
 ```
@@ -11,6 +9,19 @@ rake app:populate
 ```
 
 ## Configuration
+### Initialization
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'lynks_service_desk'
+```
+
+Run the following
+```ruby
+rake lynks_service_desk:install:migrations
+rake db:migrate
+rails generate lynks_service_desk:config
+```
 
 ## Paths
 
@@ -39,16 +50,14 @@ rake app:populate
 ```
 
 ## Installation
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'lynks_service_desk'
-```
 
 And then execute:
 ```bash
 $ bundle install
 ```
+
+## Database
+![Who removed the erd image file ? :( ](erd.png)
 
 ## Contributing
 Contribution directions go here.
