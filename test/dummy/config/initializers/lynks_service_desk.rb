@@ -140,7 +140,10 @@ LynksServiceDesk.configure do |config|
   # config.ticket_objects expects a hash
   # default: { "Comment" => [:user_id, :body] }
   # note: :created_at is automatically added
-  config.ticket_objects = { "Comment" => [:user_id, :body] }
+  config.ticket_objects = {
+    "Comment" => [:user_id, :body],
+    "something else" => [:option_1, :option_2]
+   }
 
 end
     

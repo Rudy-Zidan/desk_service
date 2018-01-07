@@ -130,7 +130,7 @@ module LynksServiceDesk
     end
 
     def objects
-
+      
     end
 
     def set_ticket
