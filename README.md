@@ -102,6 +102,9 @@ Example = "Awaiting reply"
 Default = "Open"
 ```
 
+```ruby
+
+```
 ## Paths
 
 ### Create New Ticket

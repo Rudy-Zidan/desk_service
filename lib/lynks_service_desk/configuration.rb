@@ -106,9 +106,9 @@ module LynksServiceDesk
   # default: "Open"
 
   # @check_for_unopened_using_metrics expects a boolean
-  # this will default all tickets with no metrics to the state "new"
+  # this will default all tickets with no metrics to the state "unopened"
   # default: true
-  # protip: set this to false if your initial state is "new"
+  # protip: set this to false if your initial state is "unopened"
 
   # @state_transitions expects a hash
   # default: { "Mark as on hold" => ["Open", "On Hold"],
