@@ -32,9 +32,11 @@ This creates a configuration file, and can be found as `config/initializers/lynk
 ## Configuration
 Inside `config/initializers/lynks_service_desk_config.rb`, you will find the following options available:
 
-`config.ticketable_classes`
-This expects an array of classes. Example: `["Order", "User", "Item"]`
-Default: `[]`
+```ruby 
+config.ticketable_classes
+# This expects an array of classes. Example: `["Order", "User", "Item"]`
+# Default: `[]`
+```
 
 ## Paths
 
