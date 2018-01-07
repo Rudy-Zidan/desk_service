@@ -58,6 +58,10 @@ module LynksServiceDesk
         array
       end
 
+      def self.allowed_ticket_objects
+        ticket_objects
+      end
+
       #instead of typing LynksServiceDesk.configuration every time
       def self.method_missing(meth, *args, &block)
         if LynksServiceDesk.configuration.respond_to? meth
