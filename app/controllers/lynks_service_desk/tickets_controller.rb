@@ -130,6 +130,7 @@ module LynksServiceDesk
     end
 
     def objects
+      type = params.fetch(:type)
       
     end
 
