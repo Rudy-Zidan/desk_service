@@ -10,6 +10,8 @@ rake app:db:migrate
 rake app:populate
 ```
 
+## Configuration
+
 ## Paths
 
 ### Create New Ticket

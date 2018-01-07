@@ -43,16 +43,28 @@ module LynksServiceDesk
     end
 
     def show
-      permitted_params = params.permit(:id)
-      ticket = LynksServiceDesk::Ticket.find(params[:id])
-
       respond_to do |format|
-        format.json { render json: ticket.hash_format.to_json }
+        format.json { render json: @ticket.hash_format.to_json }
       end
     end
 
     def update
-      # rethink
+      user_id = params.fetch(:user_id)
+      new_assignee_id = params.fetch(:assignee_id)
+      @ticket.assignee_id = new_assignee_id
+      @ticket.save!
+      @ticket.metrics.create!(
+        user_id: user_id,
+        action: "assigned_to_#{new_assignee_id}_by_#{user_id}"
+      )
+
+      respond_to do |format|
+        format.json { render json: @ticket.reload.hash_format.to_json }
+      end
+    rescue ActionController::ParameterMissing => e
+      respond_to do |format|
+        format.json { render json: {message: e.message}.to_json, status: 403 }
+      end
     end
 
     def create
