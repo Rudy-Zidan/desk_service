@@ -22,8 +22,9 @@ rake lynks_service_desk:install:migrations
 rake db:migrate
 ```
 Create the configuration file
-`rails generate lynks_service_desk:config`
-
+```ruby
+rails generate lynks_service_desk:config
+```
 ## Paths
 
 ### Create New Ticket
