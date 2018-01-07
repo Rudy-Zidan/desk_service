@@ -13,6 +13,15 @@ module LynksServiceDesk
       def to_a
         return [self]
       end
+
+      def plural?
+        return self.pluralize == self
+      end
+
+      def singular?
+        return self.singularize == self
+      end
+
     end
 
     refine Symbol do

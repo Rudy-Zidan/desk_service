@@ -2,6 +2,7 @@ module LynksServiceDesk
   class TicketsController < ApplicationController
     require 'aasm'
     include LynksServiceDesk::TicketHelper
+    using LynksServiceDesk::Refinements
 
     skip_before_action :verify_authenticity_token
     before_action :set_ticket, only: [:show, :update, :transition_state, :metrics, :objects]
@@ -131,7 +132,7 @@ module LynksServiceDesk
 
     def objects
       type = params.fetch(:type)
-      
+
     end
 
     def set_ticket
