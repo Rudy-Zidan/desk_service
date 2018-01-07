@@ -1,5 +1,6 @@
 # LynksServiceDesk
-
+## About
+Fully Configurable Ticketing API Engine, with categories, sub categories, priorities, metrics, and more!
 
 ## Usage
 ```
@@ -86,6 +87,12 @@ config.sub_categories_messages
 }
 # words preceded with a '%' sign will be subbed with its value in config.sub_categories_parameters
 Default = {}
+```
+
+```ruby
+config.record_state_transitions_as_metrics
+# This expects a boolean
+# 
 ```
 
 ## Paths
