@@ -41,7 +41,8 @@ Default = []
 
 ```ruby
 config.priorities
-# This expects a hash, where the key is the priority's name, and the value is the number of hours allocated
+# This expects a hash, where the key is the priority's name,
+# and the value is the number of hours allocated
 Example = {
 	"Priority Name": no_of_hours
 }
