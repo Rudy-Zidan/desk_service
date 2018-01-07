@@ -1,13 +1,6 @@
 # LynksServiceDesk
 Fully Configurable Ticketing API Engine, with categories, sub categories, states, priorities, metrics, relation objects, custom objects, and more!
 
-## Usage
-```
-createdb lynks_service_desk_development
-rake app:db:migrate
-rake app:populate
-```
-
 ## Configuration
 ### Initialization
 Add this line to your application's Gemfile:
