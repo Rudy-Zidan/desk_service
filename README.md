@@ -85,6 +85,7 @@ config.sub_categories_messages
 	}
 }
 # words preceded with a '%' sign will be subbed with its value in config.sub_categories_parameters
+Default = {}
 ```
 
 ## Paths
