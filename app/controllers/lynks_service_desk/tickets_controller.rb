@@ -95,12 +95,6 @@ module LynksServiceDesk
       respond_to do |format|
         format.json { render json: {message: e.message}.to_json, status: 404 } 
       end
-
-    rescue => e
-      respond_to do |format|
-        format.json { render json: {message: e.message}.to_json, status: 500 } 
-      end
-
     end
 
     def transition_state
