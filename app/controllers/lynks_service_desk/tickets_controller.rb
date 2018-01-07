@@ -53,6 +53,7 @@ module LynksServiceDesk
       new_assignee_id = params.fetch(:assignee_id)
       @ticket.assignee_id = new_assignee_id
       @ticket.save!
+      @ticket.skip_metrics_validation = true
       @ticket.metrics.create!(
         user_id: user_id,
         action: "assigned_to_#{new_assignee_id}_by_#{user_id}"

@@ -17,7 +17,8 @@ module LynksServiceDesk
     belongs_to :ticket
     default_scope { order(created_at: :asc) }
     before_validation :populate_durations
-    validate :metric_allowed?
+    validate :metric_allowed?, unless: :skip_metrics_validation
+    delegate :skip_metrics_validation, to: :ticket
 
     def populate_durations
 

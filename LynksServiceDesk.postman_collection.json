@@ -8,6 +8,28 @@
 	},
 	"item": [
 		{
+			"name": "All categories and sub-categories",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets/new.json",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "Create Ticket",
 			"request": {
 				"url": "localhost:3000/lynks_service_desk/tickets.json",
@@ -33,10 +55,32 @@
 			"response": []
 		},
 		{
-			"name": "All categories and sub-categories",
+			"name": "Get Ticket",
 			"request": {
-				"url": "localhost:3000/lynks_service_desk/tickets/new.json",
+				"url": "localhost:3000/lynks_service_desk/tickets/15.json",
 				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Ticket Assignee",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets/8.json",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Accept",
@@ -49,7 +93,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"assignee_id\": 1,\n\t\"user_id\": 2\n}"
+				},
 				"description": ""
 			},
 			"response": []
@@ -75,28 +122,6 @@
 					"mode": "raw",
 					"raw": "{\n\t\"state_transition\": \"close\",\n\t\"user_id\": 15\n}"
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get Ticket",
-			"request": {
-				"url": "localhost:3000/lynks_service_desk/tickets/15.json",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {},
 				"description": ""
 			},
 			"response": []
