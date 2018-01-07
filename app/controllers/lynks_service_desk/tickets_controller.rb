@@ -143,7 +143,8 @@ module LynksServiceDesk
         format.json { render json: @ticket.reload.hash_format.to_json, status: 200 }
       end
     rescue ActionController::ParameterMissing,
-           LynksServiceDesk::Exceptions::InvalidObject => e
+           LynksServiceDesk::Exceptions::InvalidObject,
+           LynksServiceDesk::Exceptions::ObjectNotInConfig => e
       respond_to do |format|
         format.json { render json: {
           message: e.message},
