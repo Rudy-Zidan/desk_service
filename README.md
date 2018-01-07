@@ -88,6 +88,13 @@ config.record_state_transitions_as_metrics
 Default = true
 ```
 
+```ruby
+config.allowed_metric_types
+# This expects an array of allowed metrics
+Example = ["First view", "First customer contact"]
+Default = []
+```
+
 ## Paths
 
 ### Create New Ticket
