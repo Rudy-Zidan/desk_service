@@ -111,6 +111,18 @@ config.check_for_unopened_using_metrics
 # is already "unopened"
 Default = true
 ```
+```ruby
+# config.state_transitions
+# This expects a state transitions hash in the following format
+Example = {
+	"transition_action_name_1" => ["from_state_name_1", "to_state_name_1"],
+	"transition_action_name_2" => ["from_state_name_2", ["to_state_name_1", "to_state_name_2"]]
+}
+Default = {
+	"Mark as on hold" => ["Open", "On Hold"],
+	"Close" => [["Open", "On Hold"], "Closed"]
+}
+```
 
 ## Paths
 
