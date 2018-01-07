@@ -52,6 +52,20 @@ Default = {
 	"low" => 48
 }
 ```
+
+```ruby
+config.tickets_types
+# This expects a hash in the following format
+{
+	"Category Name" => {
+		"Sub Category Name" => "Priority Name"
+	}
+}
+Default = {}
+```
+
+
+
 ## Paths
 
 ### Create New Ticket
