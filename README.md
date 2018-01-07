@@ -34,10 +34,23 @@ Inside `config/initializers/lynks_service_desk_config.rb`, you will find the fol
 
 ```ruby 
 config.ticketable_classes
-# This expects an array of classes. Example: `["Order", "User", "Item"]`
-# Default: `[]`
+# This expects an array of classes. 
+Example = ["Order", "User", "Item"]
+Default = []
 ```
 
+```ruby
+config.priorities
+# This expects a hash in the following format:
+Example = {
+	"Priority Name": no_of_hours
+}
+Default = {
+	"high" => 12,
+	"medium" => 24,
+	"low" => 48
+}
+```
 ## Paths
 
 ### Create New Ticket
