@@ -1,5 +1,5 @@
 # LynksServiceDesk
-Fully Configurable Ticketing API Engine, with categories, sub categories, priorities, metrics, relation objects, custom objects, and more!
+Fully Configurable Ticketing API Engine, with categories, sub categories, states, priorities, metrics, relation objects, custom objects, and more!
 
 ## Usage
 ```
