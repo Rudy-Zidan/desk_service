@@ -105,10 +105,8 @@ Default = "Open"
 ```ruby
 config.check_for_unopened_using_metrics
 # This expects a boolean
-# Setting this to true, will default all tickets with no metrics yet
-# to the state "unopened".
-# There is no need to set this as true if your initial state
-# is already "unopened"
+# Setting this to true, will default all tickets with no metrics yet to the state "unopened".
+# There is no need to set this as true if your initial state is already "unopened"
 Default = true
 ```
 ```ruby
