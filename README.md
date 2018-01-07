@@ -136,6 +136,17 @@ Default = {
 }
 ```
 
+```ruby
+config.ticket_objects
+# This expects a hash of custom objects
+# Note: created_at is automatically added :)
+Example = {
+	"Object Name" => [:param_1, :param_2]
+}
+Default = {
+	"Comment" => [:user_id, :body]
+}
+```
 ## Paths
 
 ### Create New Ticket
