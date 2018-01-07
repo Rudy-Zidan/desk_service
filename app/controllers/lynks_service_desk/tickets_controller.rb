@@ -133,8 +133,8 @@ module LynksServiceDesk
     def objects
       type = params.fetch(:type)
       if type.plural?
-        params[type].each do |mini_param|
-          @ticket.add_multiple_objects(type.singularize, mini_param)
+        params[:objects].each do |mini_param|
+          @ticket.add_single_object(type.singularize, mini_param)
         end
       else
         @ticket.add_single_object(type, params)
