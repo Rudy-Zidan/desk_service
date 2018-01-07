@@ -25,10 +25,13 @@ Create the configuration file
 ```ruby
 rails generate lynks_service_desk:config
 ```
+
+This creates a configuration file, and can be found as `config/initializers/lynks_service_desk_config.rb`
+
 ## Paths
 
 ### Create New Ticket
-`POST - '/tickets.json' `
+`POST - /tickets.json `
 
 ```json
 {
