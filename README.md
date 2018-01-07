@@ -20,8 +20,9 @@ Run the following
 ```ruby
 rake lynks_service_desk:install:migrations
 rake db:migrate
-rails generate lynks_service_desk:config
 ```
+Create the configuration file
+`rails generate lynks_service_desk:config`
 
 ## Paths
 
