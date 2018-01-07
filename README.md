@@ -84,7 +84,8 @@ Default = {}
 ```ruby
 config.record_state_transitions_as_metrics
 # This expects a boolean
-# 
+# Toggles whether metrics are created upon state transition or not
+Default = true
 ```
 
 ## Paths
