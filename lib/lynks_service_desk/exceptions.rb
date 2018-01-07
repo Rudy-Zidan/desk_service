@@ -6,5 +6,6 @@ module LynksServiceDesk
 		class InvalidSubCategory < StandardError; end
 		class InvalidMetric < StandardError; end
 		class InvalidObject < StandardError; end
+		class ObjectNotInConfig < StandardError; end
 	end
 end

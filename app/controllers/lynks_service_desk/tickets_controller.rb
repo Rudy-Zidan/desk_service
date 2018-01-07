@@ -133,7 +133,9 @@ module LynksServiceDesk
     def objects
       type = params.fetch(:type)
       if type.plural?
-        @ticket.add_multiple_objects(type, params.fetch(:objects).to_a)
+        params[type].each do |mini_param|
+          @ticket.add_multiple_objects(type.singularize, mini_param)
+        end
       else
         @ticket.add_single_object(type, params)
       end
@@ -141,11 +143,13 @@ module LynksServiceDesk
         format.json { render json: @ticket.reload.hash_format.to_json, status: 200 }
       end
     rescue ActionController::ParameterMissing,
-           LynksServiceDsk::Exceptions::InvalidObject => e
+           LynksServiceDesk::Exceptions::InvalidObject => e
+      respond_to do |format|
         format.json { render json: {
           message: e.message},
           status: 403
         }
+      end
     end
 
     def set_ticket

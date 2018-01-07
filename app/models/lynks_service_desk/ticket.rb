@@ -96,13 +96,23 @@ module LynksServiceDesk
     end
 
     def add_single_object(type, params)
-      byebug
-
-    end
-
-    def add_multiple_objects(type, params)
-
-    end
+      self.body["objects"] = self.body["objects"].to_h
+      self.body["objects"][type.pluralize] = self.body["objects"][type.pluralize].to_a
+      keys_to_look_for = CONFIG.allowed_ticket_objects[type.to_sym]
+      if keys_to_look_for.blank?
+        raise LynksServiceDesk::Exceptions::ObjectNotInConfig, "Could not find any parameters for #{type}. Is it defined in the config file ?"
+      end
+      object = {}
+      keys_to_look_for.each do |key|
+        value = params[key] || params[key.to_s] || params[key.to_sym]
+        if value.blank?
+          raise LynksServiceDesk::Exceptions::InvalidObject, "'#{key}' is missing"
+        end
+        object[key] = value
+      end
+      self.body["objects"][type.pluralize] << object
+      self.save!
+   end
 
     def save_relation_objects!
       CONFIG.allowed_relation_objects_attributes.each do |attr_name|
