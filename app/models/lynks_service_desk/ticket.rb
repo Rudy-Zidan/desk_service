@@ -110,6 +110,7 @@ module LynksServiceDesk
         end
         object[key] = value
       end
+      object[:created_at] = Time.zone.now
       self.body["objects"][type.pluralize] << object
       self.save!
    end
