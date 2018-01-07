@@ -254,13 +254,13 @@ Responses:
 403 Forbidden - Missing Parameter, or invalid parameter type
 ```json
 {
-	message: "Missing, or invalid parameter X"
+	"message": "Missing, or invalid parameter X"
 }
 ```
 404 Not Found - Could not find sub category with name/slug
 ```json
 {
-	message: "Could not find sub category with slug slug"
+	"message": "Could not find sub category with slug slug"
 }
 ```
 ## Installation
