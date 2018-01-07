@@ -76,6 +76,16 @@ config.sub_categories_parameters
 Default = {}
 ```
 
+```ruby
+config.sub_categories_messages
+# This expects a hash in the following format
+{
+	"Sub Category Name" => {
+		locale: "Hello %name"
+	}
+}
+# words preceded with a '%' sign will be subbed with one of the parameters in config.sub_categories_parameters
+```
 
 ## Paths
 
