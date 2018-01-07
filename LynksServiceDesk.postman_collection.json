@@ -1,0 +1,180 @@
+{
+	"variables": [],
+	"info": {
+		"name": "LynksServiceDesk",
+		"_postman_id": "d3c3096d-2019-4367-483d-550a09c8bb7b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Ticket",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets.json",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"creator_id\": 1,\n\t\"assignee_id\": 2,\n\t\"sub_category\": {\n\t\t\"name\": \"Price Change\",\n\t\t\"slug\": \"price-change\",\n\t\t\"options\": {\n\t\t\t\"price_before\": 10,\n\t\t\t\"price_after\": 10.5,\n\t\t\t\"due_date\": \"1-1-2017\",\n\t\t\t\"name\": \"hello\"\n\t\t}\n\t},\n\t\"references\": {\n\t\t\"order_id\": 1,\n\t\t\"item_ids\": [1,2,3]\n\t}\n}"
+				},
+				"description": "Ticket creation"
+			},
+			"response": []
+		},
+		{
+			"name": "All categories and sub-categories",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets/new.json",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Transition State",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets/8/transition_state.json",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"state_transition\": \"close\",\n\t\"user_id\": 15\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Ticket",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets/15.json",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Metric",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets/8/metrics.json",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"metric_action\": \"first_view\",\n\t\"user_id\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Single Ticket Object",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets/8/objects.json",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\": \"comment\",\n\t\"user_id\": 18,\n\t\"body\": \"Hello World\"\n\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Multiple Ticket Objects",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets/8/objects.json",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\": \"comments\",\n\t\"objects\":[\n\t\t{\n\t\t\t\"user_id\": 15,\n\t\t\t\"body\": \"body 1\"\n\t\t},\n\t\t{\n\t\t\t\"user_id\": 15,\n\t\t\t\"body\": \"body 2\"\n\t\t},\n\t\t{\n\t\t\t\"user_id\": 15,\n\t\t\t\"body\": \"body 3\"\n\t\t},\n\t\t{\n\t\t\t\"user_id\": 15,\n\t\t\t\"body\": \"body 4\"\n\t\t}\n\t]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
