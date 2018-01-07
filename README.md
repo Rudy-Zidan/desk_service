@@ -173,8 +173,11 @@ Default = {
 }
 ```
 Starred keys are required.
+
 You can either send a sub category name, or a slug.
-Options must match the type declared in the config file
+
+Options must match the type declared in the config file.
+
 Reference objects can either be singular, in the form `class_name_id`, or multiple, in the form `class_name_ids`
 
 Responses:
