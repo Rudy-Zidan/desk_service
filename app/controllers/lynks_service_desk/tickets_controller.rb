@@ -131,10 +131,9 @@ module LynksServiceDesk
     end
 
     def objects
-      byebug
       type = params.fetch(:type)
       if type.plural?
-        @ticket.add_multiple_objects(type, params[:type].to_a)
+        @ticket.add_multiple_objects(type, params.fetch(:objects).to_a)
       else
         @ticket.add_single_object(type, params)
       end

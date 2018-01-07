@@ -95,6 +95,15 @@ module LynksServiceDesk
       self[:body]
     end
 
+    def add_single_object(type, params)
+      byebug
+
+    end
+
+    def add_multiple_objects(type, params)
+
+    end
+
     def save_relation_objects!
       CONFIG.allowed_relation_objects_attributes.each do |attr_name|
         next if self.send(attr_name).blank?
