@@ -109,16 +109,30 @@ config.check_for_unopened_using_metrics
 # There is no need to set this as true if your initial state is already "unopened"
 Default = true
 ```
+
 ```ruby
-# config.state_transitions
+config.state_transitions
 # This expects a state transitions hash in the following format
 Example = {
-	"transition_action_name_1" => ["from_state_name", "to_state_name_1"],
-	"transition_action_name_2" => [["from_state_name_1", "from_state_name_2"],"to_state_name_2"]
+	"Transition Action Name 1" => ["From State Name", "To State Name"],
+	"Transition Action Name 2" => [["From State Name 1", "From State Name 2"],"To State Name 2"]
 }
 Default = {
 	"Mark as on hold" => ["Open", "On Hold"],
 	"Close" => [["Open", "On Hold"], "Closed"]
+}
+```
+
+```ruby
+config.custom_scopes
+# This expects a custom scopes hash in the following format
+Example = {
+	"Scope Name" => ["State Name 1", "State Name 2"],
+	"Another Scope Name" => "State Name"
+}
+Default = {
+	"Unresolved" => ["Open", "On Hold"],
+	"Resolved" => "Closed"
 }
 ```
 
