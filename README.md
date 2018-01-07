@@ -95,6 +95,13 @@ Example = ["First view", "First customer contact"]
 Default = []
 ```
 
+```ruby
+config.initial_state
+# This expects a string
+Example = "Awaiting reply"
+Default = "Open"
+```
+
 ## Paths
 
 ### Create New Ticket
