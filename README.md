@@ -64,6 +64,17 @@ config.tickets_types
 Default = {}
 ```
 
+```ruby
+config.sub_categories_parameters
+# This expects a hash in the following format
+{
+	"Sub Category Name" => {
+		"parameter_name" => Datatype
+	}
+}
+# Available data types: String, DateTime, Date, Integer, Float
+Default = {}
+```
 
 
 ## Paths
