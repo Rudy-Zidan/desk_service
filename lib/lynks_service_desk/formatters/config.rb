@@ -59,7 +59,11 @@ module LynksServiceDesk
       end
 
       def self.allowed_ticket_objects
-        ticket_objects
+        return_hash = {}
+        ticket_objects.map do |object_type, allowed_object_params|
+          return_hash[object_type.syminize] = allowed_object_params.map{|param| param.to_sym}
+        end
+        return_hash
       end
 
       #instead of typing LynksServiceDesk.configuration every time

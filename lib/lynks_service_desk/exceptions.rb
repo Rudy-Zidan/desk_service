@@ -5,5 +5,6 @@ module LynksServiceDesk
 		class InvalidDataType < StandardError; end
 		class InvalidSubCategory < StandardError; end
 		class InvalidMetric < StandardError; end
+		class InvalidObject < StandardError; end
 	end
 end

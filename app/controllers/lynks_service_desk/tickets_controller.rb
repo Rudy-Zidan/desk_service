@@ -131,8 +131,18 @@ module LynksServiceDesk
     end
 
     def objects
+      byebug
       type = params.fetch(:type)
-
+      if type.plural?
+        @ticket.add_multiple_objects(type, params[:type].to_a)
+      else
+        @ticket.add_single_object(type, params)
+      end
+      respond_to do |format|
+        format.json { render json: @ticket.reload.hash_format.to_json, status: 200 }
+      end
+    rescue ActionController::ParameterMissing,
+           LynksServiceDsk::Exceptions::InvalidObject => e
     end
 
     def set_ticket
