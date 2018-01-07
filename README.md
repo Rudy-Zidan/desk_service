@@ -84,7 +84,7 @@ config.sub_categories_messages
 		locale: "Hello %name"
 	}
 }
-# words preceded with a '%' sign will be subbed with one of the parameters in config.sub_categories_parameters
+# words preceded with a '%' sign will be subbed with its value in config.sub_categories_parameters
 ```
 
 ## Paths
