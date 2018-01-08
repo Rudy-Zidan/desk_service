@@ -147,7 +147,8 @@ Default = {
 	"Comment" => [:user_id, :body]
 }
 ```
-
+## Documentation
+For more details, [check out the wiki](https://github.com/Lynks/LynksServiceDesk/wiki)
 
 ## Database
 ![Who removed the erd image file ? :( ](erd.png)
