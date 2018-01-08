@@ -147,7 +147,7 @@ Default = {
 	"Comment" => [:user_id, :body]
 }
 ```
-## Documentation
+## Documentation & API
 For more details, [check out the wiki](https://github.com/Lynks/LynksServiceDesk/wiki)
 
 ## Database
