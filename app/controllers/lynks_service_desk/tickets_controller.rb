@@ -101,6 +101,7 @@ module LynksServiceDesk
       state_transition = params.fetch(:state_transition)
       @ticket.state_transition = state_transition
       @ticket.user_id = params[:user_id]
+      @ticket.skip_metrics_validation = true
       @ticket.save!
       @ticket.reload
       respond_to do |format|
