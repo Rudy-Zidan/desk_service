@@ -67,8 +67,9 @@ module LynksServiceDesk
       end
 
       def self.formatted_custom_scopes
+        return_hash = {}
         custom_scopes.map do |scope_name, states_array|
-          return_hash[scope_name.syminize] = states_array.map{|state| state.syminize}
+          return_hash[scope_name.syminize] = states_array.to_a.map{|state| state.syminize}
         end
         return_hash
       end
