@@ -10,24 +10,10 @@ module LynksServiceDesk
     CONFIG = LynksServiceDesk::Formatters::Config
 
     def index
-      byebug
-      permitted_params = params.permit(:page, :limit, :scope)
-      page = permitted_params[:page] || 1
-      limit = permitted_params[:limit] || 30
-      scope = permitted_params[:scope]
-
-      if scope.present? && LynksServiceDesk::Ticket.respond_to?(scope)
-        @tickets = LynksServiceDesk::Ticket.send(scope).page(page).per(limit)
-        # although we can chain page and per, it is better this way
-        # or else, the tickets will load all of the tickets in the scope which
-        # may be a lot
-      else
-        @tickets = LynksServiceDesk::Ticket.page(page).per(limit)
-      end
-
+      tickets = LynksServiceDesk::Formatters::Controller.query_tickets(params)
       respond_to do |format|
         format.json { render json:
-          @tickets.map(&:hash_format).to_json
+          tickets.map(&:hash_format).to_json
         }
       end
     end
