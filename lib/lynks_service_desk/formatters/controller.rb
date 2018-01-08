@@ -10,19 +10,28 @@ module LynksServiceDesk
       end
 
       def self.query_tickets(params)
-        permitted_params = params.permit(:page, :limit, :scope)
-        page = permitted_params[:page] || 1
-        limit = permitted_params[:limit] || 30
-        scope = permitted_params[:scope]
-
-        if scope.present? && LynksServiceDesk::Ticket.respond_to?(scope)
-          @tickets = LynksServiceDesk::Ticket.send(scope).page(page).per(limit)
-          # although we can chain page and per, it is better this way
-          # or else, the tickets will load all of the tickets in the scope which
-          # may be a lot
-        else
-          @tickets = LynksServiceDesk::Ticket.page(page).per(limit)
+        tickets = LynksServiceDesk::Ticket
+        joint_tables = []
+        ["ticket", "sub_category", "category", "metric"].each do |model_name|
+          query_options[model_name].each do |attribute|
+            to_look_for = params["#{model_name}_#{attribute}"].to_a + params["#{model_name}_#{attribute}s"].to_a
+            next if to_look_for.blank?
+            @tickets.send("where", "lynk")
+          end
         end
+
+
+      end
+
+      def self.query_options
+        {
+          "ticket" => ["id", "assignee_id", "creator_id"],
+          "sub_category" => ["id", "name", "slug"],
+          "category" => ["id", "name", "slug"],
+          "metric" => ["user_id", "action"],
+          "no_tables" => ["metrics", "ticket_relation_objects"],
+          "no_fields" => ["creator_id" "assignee_id"],
+        }
       end
 
     end

@@ -10,10 +10,25 @@ module LynksServiceDesk
     CONFIG = LynksServiceDesk::Formatters::Config
 
     def index
-      tickets = LynksServiceDesk::Formatters::Controller.query_tickets(params)
+      if params[:query].present?
+        tickets = LynksServiceDesk::Formatters::Controller.query_tickets(params)
+      else
+        tickets = LynksServiceDesk::Ticket
+      end
+
+      page = params[:page] || 1
+      limit = params[:limit] || 30
+      scope = params[:scope]
+
+      if scope.present? && LynksServiceDesk::Ticket.respond_to?(scope)
+        @tickets = tickets.send(scope)
+      else
+        @tickets = tickets
+      end
+
       respond_to do |format|
         format.json { render json:
-          tickets.map(&:hash_format).to_json
+          @tickets.page(page).per(limit).map(&:hash_format).to_json
         }
       end
     end
