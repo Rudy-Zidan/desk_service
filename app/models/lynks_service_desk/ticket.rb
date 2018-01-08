@@ -36,6 +36,10 @@ module LynksServiceDesk
                          .where(lynks_service_desk_metrics: {id: nil}) }
     end
 
+    CONFIG.formatted_custom_scopes.each do |scope_name, allowed_states|
+      scope scope_name, -> () { where(state: allowed_states) }
+    end
+
     aasm :state, column: "state" do
       state CONFIG.initial_state_symbol, initial: true
       CONFIG.other_states.each{|state_symbol| state state_symbol}

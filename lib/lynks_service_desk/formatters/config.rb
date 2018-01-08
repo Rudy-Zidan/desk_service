@@ -66,6 +66,13 @@ module LynksServiceDesk
         return_hash
       end
 
+      def self.formatted_custom_scopes
+        custom_scopes.map do |scope_name, states_array|
+          return_hash[scope_name.syminize] = states_array.map{|state| state.syminize}
+        end
+        return_hash
+      end
+
       #instead of typing LynksServiceDesk.configuration every time
       def self.method_missing(meth, *args, &block)
         if LynksServiceDesk.configuration.respond_to? meth
