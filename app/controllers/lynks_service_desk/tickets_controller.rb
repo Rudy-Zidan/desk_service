@@ -10,6 +10,7 @@ module LynksServiceDesk
     CONFIG = LynksServiceDesk::Formatters::Config
 
     def index
+      byebug
       permitted_params = params.permit(:page, :limit, :scope)
       page = permitted_params[:page] || 1
       limit = permitted_params[:limit] || 30

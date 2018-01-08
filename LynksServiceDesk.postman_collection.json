@@ -57,7 +57,7 @@
 		{
 			"name": "Get Ticket",
 			"request": {
-				"url": "localhost:3000/lynks_service_desk/tickets/15.json",
+				"url": "localhost:3000/lynks_service_desk/tickets/24.json",
 				"method": "GET",
 				"header": [
 					{
@@ -104,7 +104,7 @@
 		{
 			"name": "Transition State",
 			"request": {
-				"url": "localhost:3000/lynks_service_desk/tickets/8/transition_state.json",
+				"url": "localhost:3000/lynks_service_desk/tickets/24/transition_state.json",
 				"method": "POST",
 				"header": [
 					{
@@ -129,7 +129,7 @@
 		{
 			"name": "Create Metric",
 			"request": {
-				"url": "localhost:3000/lynks_service_desk/tickets/8/metrics.json",
+				"url": "localhost:3000/lynks_service_desk/tickets/19/metrics.json",
 				"method": "POST",
 				"header": [
 					{
@@ -197,6 +197,17 @@
 					"mode": "raw",
 					"raw": "{\n\t\"type\": \"comments\",\n\t\"objects\":[\n\t\t{\n\t\t\t\"user_id\": 15,\n\t\t\t\"body\": \"body 1\"\n\t\t},\n\t\t{\n\t\t\t\"user_id\": 15,\n\t\t\t\"body\": \"body 2\"\n\t\t},\n\t\t{\n\t\t\t\"user_id\": 15,\n\t\t\t\"body\": \"body 3\"\n\t\t},\n\t\t{\n\t\t\t\"user_id\": 15,\n\t\t\t\"body\": \"body 4\"\n\t\t}\n\t]\n}"
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tickets",
+			"request": {
+				"url": "localhost:3000/lynks_service_desk/tickets.json",
+				"method": "GET",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []
