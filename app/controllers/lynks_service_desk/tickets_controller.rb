@@ -107,7 +107,7 @@ module LynksServiceDesk
         format.json { render json: @ticket.hash_format.to_json, status: 200 }
       end
     rescue ActionController::ParameterMissing,
-           NoMethodError,
+           NoMethodError, LynksServiceDesk::Exceptions::InvalidMetric,
            AASM::InvalidTransition => e
       respond_to do |format|
         format.json { render json: {
