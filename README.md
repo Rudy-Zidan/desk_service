@@ -148,15 +148,6 @@ Default = {
 }
 ```
 
-## Installation
-
-And then execute:
-```bash
-$ bundle install
-```
 
 ## Database
 ![Who removed the erd image file ? :( ](erd.png)
-
-## Contributing
-Contribution directions go here.
