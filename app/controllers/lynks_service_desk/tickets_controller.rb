@@ -40,6 +40,12 @@ module LynksServiceDesk
                                       params[:category_slug] )
       end
 
+      if params[:priority_slug].present?
+        tickets = tickets.joins(:priority)
+                  .where("lynks_service_desk_priorities.slug = ?",
+                                      params[:priority_slug] )
+      end
+
       respond_to do |format|
         format.json { render json:
           tickets.page(page).per(limit).map(&:hash_format).to_json

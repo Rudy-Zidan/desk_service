@@ -26,9 +26,9 @@ module LynksServiceDesk
     default_scope -> () {order(created_at: :DESC)}
     belongs_to :sub_category
     has_one :category, through: :sub_category
+    has_one :priority, through: :sub_category
     has_many :metrics
     has_many :objects, class_name: "LynksServiceDesk::TicketRelationObject"
-    delegate :category, to: :sub_category
 
     # just in case, i added the second condition, so as to not override the default state scope
     if CONFIG.unopened_using_metrics? && !self.respond_to?(:unopened)
