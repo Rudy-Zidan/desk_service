@@ -204,7 +204,56 @@
 		{
 			"name": "Get Tickets",
 			"request": {
-				"url": "localhost:3000/lynks_service_desk/tickets.json",
+				"url": {
+					"raw": "localhost:3000/lynks_service_desk/tickets.json?limit=1&scope=closed&sub_category_slug=price_change&category_slug=operations&assignee_id=2&creator_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lynks_service_desk",
+						"tickets.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "scope",
+							"value": "closed",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "sub_category_slug",
+							"value": "price_change",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "category_slug",
+							"value": "operations",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "assignee_id",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "creator_id",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
