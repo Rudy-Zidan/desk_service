@@ -27,8 +27,8 @@ module LynksServiceDesk
     belongs_to :sub_category
     has_one :category, through: :sub_category
     has_one :priority, through: :sub_category
-    has_many :metrics
-    has_many :objects, class_name: "LynksServiceDesk::TicketRelationObject"
+    has_many :metrics, dependent: :destroy
+    has_many :objects, class_name: "LynksServiceDesk::TicketRelationObject", dependent: :destroy
 
     # just in case, i added the second condition, so as to not override the default state scope
     if CONFIG.unopened_using_metrics? && !self.respond_to?(:unopened)
