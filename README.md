@@ -147,6 +147,9 @@ Default = {
 	"Comment" => [:user_id, :body]
 }
 ```
+
+Do not forget to run `rake lynks_service_desk:match_database_with_configuration` after any and all changes to your configuration file in order for the database to be updated!
+
 ## Documentation & API
 For more details, [check out the wiki](https://github.com/Lynks/LynksServiceDesk/wiki)
 
