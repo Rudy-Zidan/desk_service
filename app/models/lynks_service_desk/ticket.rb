@@ -25,6 +25,7 @@ module LynksServiceDesk
     after_save :save_relation_objects!
     default_scope -> () {order(created_at: :DESC)}
     belongs_to :sub_category
+    has_one :category, through: :sub_category
     has_many :metrics
     has_many :objects, class_name: "LynksServiceDesk::TicketRelationObject"
     delegate :category, to: :sub_category
