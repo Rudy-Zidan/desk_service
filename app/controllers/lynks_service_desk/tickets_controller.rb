@@ -23,6 +23,8 @@ module LynksServiceDesk
       end
 
       return_hash = {}
+      return_hash[:current_scope] = scope
+
       return_hash[:scopes] = CONFIG.formatted_custom_scopes.keys + [:all]
       if CONFIG.unopened_using_metrics? && !self.respond_to?(:unopened)
         return_hash[:scopes] += [:unopened]
