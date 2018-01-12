@@ -23,6 +23,8 @@ module LynksServiceDesk
           param_value = options[param_name]
           raise NameError if !["String", "Date", "DateTime", "Integer", "Float"].include?(param_type)
 
+          param_value ||= ""
+
           case param_type
           when "String"
             param_value = param_value.to_s
@@ -36,7 +38,6 @@ module LynksServiceDesk
             param_value = param_value.to_f
           end
 
-          param_value ||= ""
 
           results_hash[param_name] = param_value
         rescue ArgumentError => e
