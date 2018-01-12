@@ -48,7 +48,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"creator_id\": 1,\n\t\"assignee_id\": 2,\n\t\"sub_category\": {\n\t\t\"name\": \"Price Change\",\n\t\t\"slug\": \"price-change\",\n\t\t\"options\": {\n\t\t\t\"price_before\": 10,\n\t\t\t\"price_after\": 10.5,\n\t\t\t\"due_date\": \"1-1-2017\",\n\t\t\t\"name\": \"hello\"\n\t\t}\n\t},\n\t\"references\": {\n\t\t\"order_id\": 1,\n\t\t\"item_ids\": [1,2,3]\n\t}\n}"
+					"raw": "{\n\t\"creator_id\": 1,\n\t\"assignee_id\": 2,\n\t\"description\": \"Test Description\",\n\t\"sub_category\": {\n\t\t\"name\": \"Price Change\",\n\t\t\"slug\": \"price-change\",\n\t\t\"options\": {\n\t\t\t\"price_before\": 10,\n\t\t\t\"price_after\": 10.5,\n\t\t\t\"name\": \"hello\"\n\t\t}\n\t},\n\t\"references\": {\n\t\t\"order_id\": 1,\n\t\t\"item_ids\": [1,2,3]\n\t}\n}"
 				},
 				"description": "Ticket creation"
 			},
@@ -205,7 +205,7 @@
 			"name": "Get Tickets",
 			"request": {
 				"url": {
-					"raw": "localhost:3000/lynks_service_desk/tickets.json?limit=1&scope=closed&sub_category_slug=price_change&category_slug=operations&assignee_id=2&creator_id=1",
+					"raw": "localhost:3000/lynks_service_desk/tickets.json?page=1&limit=2&scope=closed&sub_category_slug=price_change&category_slug=operations&assignee_id=2&creator_id=1&priority_slug=high",
 					"host": [
 						"localhost"
 					],
@@ -216,8 +216,14 @@
 					],
 					"query": [
 						{
-							"key": "limit",
+							"key": "page",
 							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "limit",
+							"value": "2",
 							"equals": true,
 							"description": ""
 						},
@@ -248,6 +254,12 @@
 						{
 							"key": "creator_id",
 							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "priority_slug",
+							"value": "high",
 							"equals": true,
 							"description": ""
 						}
