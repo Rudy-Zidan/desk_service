@@ -46,9 +46,23 @@ module LynksServiceDesk
                                       params[:priority_slug] )
       end
 
+      return_hash = {}
+      return_hash[:scopes] = CONFIG.formatted_custom_scopes.keys
+      if CONFIG.unopened_using_metrics? && !self.respond_to?(:unopened)
+        return_hash[:scopes] += [:unopened]
+      end
+
+      return_hash[:scopes] += LynksServiceDesk::Ticket.aasm(:state).states.map(&:name)
+
+      return_hash[:scopes].flatten!
+      return_hash[:scopes].uniq!
+      return_hash[:scopes].each{|scope| return_hash[scope] = LynksServiceDesk::Ticket.send(scope).count}
+
+      return_hash[:tickets] = tickets.page(page).per(limit).map(&:hash_format)
+
       respond_to do |format|
         format.json { render json:
-          tickets.page(page).per(limit).map(&:hash_format).to_json
+          return_hash.to_json
         }
       end
     end
