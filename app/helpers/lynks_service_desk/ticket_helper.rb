@@ -20,7 +20,7 @@ module LynksServiceDesk
       results_hash = {}
       sub_category.options["parameters"].each do |param_name, param_type|
         begin
-          param_value = options.fetch(param_name)
+          param_value = options[param_name]
           raise NameError if !["String", "Date", "DateTime", "Integer", "Float"].include?(param_type)
 
           case param_type
@@ -35,6 +35,8 @@ module LynksServiceDesk
           when "Float"
             param_value = param_value.to_f
           end
+
+          param_value ||= ""
 
           results_hash[param_name] = param_value
         rescue ArgumentError => e
