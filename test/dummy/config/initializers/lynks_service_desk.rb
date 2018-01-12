@@ -49,7 +49,6 @@ LynksServiceDesk.configure do |config|
 
   # config.sub_categories_parameters expects sub_categories, and parameters names
   # and types that will be allowed.
-  # note: all these fields are mandatory
   # example:
   # {
   #   "Price Change" =>
