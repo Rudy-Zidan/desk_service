@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lynks_service_desk (0.6.5)
+    lynks_service_desk (0.6.6)
       aasm
       kaminari
       rails (~> 5.1.4)
