@@ -21,9 +21,8 @@ module LynksServiceDesk
       sub_category.options["parameters"].each do |param_name, param_type|
         begin
           param_value = options[param_name]
+          next if param_value.blank?
           raise NameError if !["String", "Date", "DateTime", "Integer", "Float"].include?(param_type)
-
-          param_value ||= ""
 
           case param_type
           when "String"

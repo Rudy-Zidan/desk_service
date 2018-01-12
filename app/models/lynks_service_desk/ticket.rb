@@ -65,8 +65,9 @@ module LynksServiceDesk
       self
     end
 
-    def generate!(sub_category, sub_category_params)
+    def generate!(sub_category, sub_category_params, description)
       self.sub_category = sub_category
+      self.body[:description] = description
       self.body[:values] = {}
       sub_category_params.each do |key, value|
         self.body[:values][key] = value
