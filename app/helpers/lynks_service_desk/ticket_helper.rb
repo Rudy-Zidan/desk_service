@@ -16,7 +16,7 @@ module LynksServiceDesk
     end
 
     def format_sub_category_options(sub_category)
-      options = params.require(:sub_category)[:options].to_h
+      options = params.require(:sub_category).require(:options).to_h
       results_hash = {}
       sub_category.options["parameters"].each do |param_name, param_type|
         begin
