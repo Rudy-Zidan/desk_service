@@ -19,7 +19,7 @@ module LynksServiceDesk
       if scope.present? && LynksServiceDesk::Ticket.respond_to?(scope)
         tickets = query_tickets(tickets.send(scope))
       else
-        query_tickets
+        tickets = query_tickets
       end
 
       return_hash = {}
