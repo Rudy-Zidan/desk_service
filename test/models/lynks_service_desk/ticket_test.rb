@@ -2,14 +2,15 @@
 #
 # Table name: lynks_service_desk_tickets
 #
-#  id              :integer          not null, primary key
-#  sub_category_id :integer
-#  creator_id      :integer
-#  assignee_id     :integer
-#  state           :string           not null
-#  body            :json             not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                :integer          not null, primary key
+#  sub_category_id   :integer
+#  creator_id        :integer
+#  assignee_id       :integer
+#  assignee_group_id :integer
+#  state             :string           not null
+#  body              :json             not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
 #
 
 require 'test_helper'

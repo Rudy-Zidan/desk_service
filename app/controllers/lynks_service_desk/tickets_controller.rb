@@ -66,14 +66,20 @@ module LynksServiceDesk
 
     def update
       user_id = params.fetch(:user_id)
-      new_assignee_id = params.fetch(:assignee_id)
+      new_assignee_id = params[:assignee_id]
+      new_assignee_group_id = params[:assignee_group_id]
       @ticket.assignee_id = new_assignee_id
+      @ticket.assignee_group_id = new_assignee_group_id
       @ticket.save!
       @ticket.skip_metrics_validation = true
       @ticket.metrics.create!(
         user_id: user_id,
         action: "assigned_to_#{new_assignee_id}_by_#{user_id}"
-      )
+      ) if new_assignee_id.present?
+      @ticket.metrics.create!(
+        user_id: user_id,
+        action: "assigned_to_group_#{new_assignee_group_id}_by_#{user_id}"
+      ) if new_assignee_group_id.present?
 
       respond_to do |format|
         format.json { render json: @ticket.reload.hash_format.to_json }
@@ -93,6 +99,7 @@ module LynksServiceDesk
       reference_params.each{|attr_name, attr_value| ticket.send("#{attr_name}=", attr_value)}
       ticket.creator_id = params[:creator_id] if params[:creator_id].present? 
       ticket.assignee_id = params[:assignee_id] if params[:assignee_id].present?
+      ticket.assignee_group_id = params[:assignee_group_id] if params[:assignee_group_id].present?
       description = params[:description]
       ticket.generate!(sub_category, sub_category_params, description)
       ticket.reload
@@ -182,6 +189,10 @@ module LynksServiceDesk
     def query_tickets(tickets=LynksServiceDesk::Ticket)
       if params[:assignee_id].present?
         tickets = tickets.where(assignee_id: params[:assignee_id])
+      end
+
+      if params[:assignee_group_id].present?
+        tickets = tickets.where(assignee_group_id: params[:assignee_group_id])
       end
 
       if params[:creator_id].present?

@@ -11,6 +11,7 @@ module LynksServiceDesk
             id: ticket.id,
             creator_id: ticket.creator_id,
             assignee_id: ticket.assignee_id,
+            assignee_group_id: ticket.assignee_group_id,
             state: ticket.public_state,
             available_state_transitions: ticket.available_state_transitions,
             available_metric_actions: LynksServiceDesk::Formatters::Config.allowed_metrics,
