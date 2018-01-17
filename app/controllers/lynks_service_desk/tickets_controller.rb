@@ -68,8 +68,8 @@ module LynksServiceDesk
       user_id = params.fetch(:user_id)
       new_assignee_id = params[:assignee_id]
       new_assignee_group_id = params[:assignee_group_id]
-      @ticket.assignee_id = new_assignee_id
-      @ticket.assignee_group_id = new_assignee_group_id
+      @ticket.assignee_id = new_assignee_id if new_assignee_id.present?
+      @ticket.assignee_group_id = new_assignee_group_id if new_assignee_group_id.present?
       @ticket.save!
       @ticket.skip_metrics_validation = true
       @ticket.metrics.create!(
